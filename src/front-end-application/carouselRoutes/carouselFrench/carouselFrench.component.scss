@@ -1,0 +1,30 @@
+.carousel-caption {
+
+  size: auto;
+}
+
+.carousel-caption h5 {
+}
+
+
+.card {
+  position: relative; /* If you need to position children absolutely within */
+  padding-top: 20px; /* Adjust this value to move the carousel down */
+  padding-bottom: 20px; /* Adjust this value to add space below the carousel */
+  /* Other styles */
+}
+
+.carousel {
+  margin-top: 20px; /* Adjust this value to move the carousel further down if needed */
+  margin-bottom: 20px; /* Adjust this value to add more space below the carousel if needed */
+  /* Other styles */
+  position: relative;
+}
+
+
+.carousel-item img {
+  width: 100%; /* This makes the image responsive, adjusting to the carousel size */
+  height: 400px; /* Set a fixed height */
+  object-fit: cover; /* This will cover the area without distorting the aspect ratio */
+}
+

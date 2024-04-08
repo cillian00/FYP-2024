@@ -1,0 +1,105 @@
+<app-header></app-header>
+<div class="card" *ngIf="accommodationData">
+  <h2>Review Accommodation Details Below:</h2>
+
+  <div>
+    <strong>ID:</strong> {{ accommodationData.accId }}
+  </div>
+  <div>
+    <strong>Title:</strong> {{ accommodationData.title }}
+  </div>
+  <div>
+    <strong>Description:</strong> {{ accommodationData.description }}
+  </div>
+  <div>
+    <strong>Location:</strong> {{ accommodationData.location }}
+  </div>
+
+  <h3>Facilities</h3>
+  <ul>
+    <li>WiFi: {{ accommodationData.facilities.wifi ? 'Available' : 'Not available' }}</li>
+    <li>Private Rooms: {{ accommodationData.facilities.privateRoomsAvailable ? 'Available' : 'Not available' }}</li>
+    <li>Food: {{ accommodationData.facilities.food ? 'Available' : 'Not available' }}</li>
+    <li>Late Checkout: {{ accommodationData.facilities.lateCheckout ? 'Available' : 'Not available' }}</li>
+    <li>24h Check-in: {{ accommodationData.facilities.twentyFourCheckIn ? 'Available' : 'Not available' }}</li>
+  </ul>
+</div>
+<div class="container mt-4">
+  <div class="row justify-content-center">
+
+      <div class="col-md-4">
+        <input type="file" (change)="onProfilePictureChange($event)" accept="image/*">
+        <img id="imageDisplay" *ngIf="profilePicturePreviewUrl" [src]="profilePicturePreviewUrl" alt="Profile Picture Preview" class="profile-picture-preview mb-3"> <!-- Added margin bottom -->
+      </div>
+    <div class="col-lg-8">
+      <h2 class="mb-4">List New Accommodation</h2>
+      <form (ngSubmit)="submitAccommodation()">
+
+        <div class="mb-3">
+          <label for="title" class="form-label">Title:</label>
+          <input type="text" class="form-control" id="title" [(ngModel)]="accommodation.title" name="title" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="descriptionOne" class="form-label">Description:</label>
+          <textarea class="form-control" id="descriptionOne" [(ngModel)]="accommodation.descriptionOne" name="descriptionOne" rows="3" required></textarea>
+        </div>
+
+        <div class="card">
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label class="form-label">Single Rooms:</label>
+            <input type="number" class="form-control" [(ngModel)]="accommodation.Rooms.single.noAvailable" name="singleRooms" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Price per Single Room:</label>
+            <input type="number" class="form-control" [(ngModel)]="accommodation.Rooms.single.pricePerRoom" name="singleRoomPrice" required>
+          </div>
+        </div>
+
+        <!-- Double Room -->
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label class="form-label">Double Rooms:</label>
+            <input type="number" class="form-control" [(ngModel)]="accommodation.Rooms.double.noAvailable" name="doubleRooms" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Price per Double Room:</label>
+            <input type="number" class="form-control" [(ngModel)]="accommodation.Rooms.double.pricePerRoom" name="doubleRoomPrice" required>
+          </div>
+        </div>
+
+    <div class="row">
+      <!-- Twin Room -->
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label class="form-label">Twin Rooms:</label>
+          <input type="number" class="form-control" [(ngModel)]="accommodation.Rooms.twin.noAvailable" name="twinRooms" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Price per Twin Room:</label>
+          <input type="number" class="form-control" [(ngModel)]="accommodation.Rooms.twin.pricePerRoom" name="twinRoomPrice" required>
+        </div>
+      </div>
+
+      <!-- Bunk Beds Room -->
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label class="form-label">Bunk Beds Rooms:</label>
+          <input type="number" class="form-control" [(ngModel)]="accommodation.Rooms.bunkBeds.noAvailable" name="bunkBedsRooms" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Price per Bunk Beds Room:</label>
+          <input type="number" class="form-control" [(ngModel)]="accommodation.Rooms.bunkBeds.pricePerRoom" name="bunkBedsRoomPrice" required>
+        </div>
+      </div>
+    </div>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Create Accommodation</button>
+      </form>
+    </div>
+  </div>
+</div>
+

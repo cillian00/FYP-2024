@@ -1,0 +1,13 @@
+#imageDisplay {
+  width: 200px;  /* Set your desired width */
+  height: 200px; /* Set your desired height */
+  object-fit: contain; /* This will make sure the image covers the area, maintaining aspect ratio */
+}
+
+img {
+
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border-color: #2c282c;
+}
+
+

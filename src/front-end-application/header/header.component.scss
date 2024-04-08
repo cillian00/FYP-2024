@@ -1,0 +1,103 @@
+nav {
+  padding-bottom: 15px;
+}
+
+form {
+  margin-left: auto;
+}
+#mainLogo {
+
+
+
+}
+ul {
+
+  padding-left: 40px;
+  align-items: center;
+}
+
+.navbar {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background: url('../../assets/images/header3.jpg') repeat-x;
+  padding: 10px 20px;
+  width: 100%;
+  z-index: 1000;
+
+}
+
+.navbar a {
+  color: #fff; /* Light text color for contrast */
+  font-size: 18px;
+  padding: 10px 15px;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+.navbar .btn-action {
+  background-color: #ffd700; /* Gold background for action button */
+  border-radius: 20px;
+  color: #000;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease;
+}
+
+.navbar a:hover, .top-nav a:focus {
+  color: #ffd700; /* Gold color for hover state */
+  text-decoration: none; /* Remove underline on hover */
+}
+
+#gradientCard {
+
+  padding: 20px;
+  background: linear-gradient(to bottom, #800080, #000000); /* Purple to Black gradient */
+
+}
+
+/* Add this CSS to your stylesheet */
+
+/* Navbar styles with Montserrat */
+.navbar-brand {
+  font-family: "Georgia";
+  font-size: 24px;
+  color: white;
+}
+
+.navbar-nav .nav-link {
+  font-family: "Georgia";
+  font-size: 18px;
+  color: #483d8b;
+  transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #ffd700;
+}
+
+/* Form control styles with Montserrat */
+.form-control {
+  font-family: "Georgia";
+  border-color: #d6d8db;
+}
+
+/* Button styles with Montserrat */
+.btn-outline-success {
+  font-family: "Georgia";
+  color: #006400;
+  border-color: #006400;
+}
+
+.btn-outline-success:hover {
+  color: #ffd700;
+  border-color: #ffd700;
+}
+/* Add this CSS to your stylesheet */
+.navbar {
+  padding-left: 200px; /* Adjust the left padding based on your preference */
+}
+
+.navbar-brand {
+  margin-right: 0; /* Reset the default right margin */
+}
+
+
+

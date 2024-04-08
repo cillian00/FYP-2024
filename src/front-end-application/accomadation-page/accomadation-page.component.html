@@ -1,0 +1,74 @@
+<!-- Accommodation Component Template -->
+<div class="container mt-4">
+  <!-- Title -->
+  <h2>{{ accommodation.title }}</h2>
+
+  <!-- Descriptions -->
+  <p>{{ accommodation.descriptionOne }}</p>
+  <p>{{ accommodation.descriptionTwo }}</p>
+
+  <!-- Rooms Information -->
+  <div class="container mt-4">
+    <h3>Rooms</h3>
+    <div class="row">
+      <!-- Single Room -->
+      <div class="col-md-6 col-lg-3 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Single Room</h5>
+            <p class="card-text">Price per Room: {{ accommodation.Rooms.single.pricePerRoom | currency }}</p>
+            <p class="card-text">Available: {{ accommodation.Rooms.single.noAvailable }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Double Room -->
+      <div class="col-md-6 col-lg-3 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Double Room</h5>
+            <p class="card-text">Price per Room: {{ accommodation.Rooms.double.pricePerRoom | currency }}</p>
+            <p class="card-text">Available: {{ accommodation.Rooms.double.noAvailable }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Twin Room -->
+      <div class="col-md-6 col-lg-3 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Twin Room</h5>
+            <p class="card-text">Price per Room: {{ accommodation.Rooms.twin.pricePerRoom | currency }}</p>
+            <p class="card-text">Available: {{ accommodation.Rooms.twin.noAvailable }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bunk Beds Room -->
+      <div class="col-md-6 col-lg-3 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Bunk Beds Room</h5>
+            <p class="card-text">Price per Room: {{ accommodation.Rooms.bunkBeds.pricePerRoom | currency }}</p>
+            <p class="card-text">Available: {{ accommodation.Rooms.bunkBeds.noAvailable }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Additional Description and Location -->
+  <h3>Description and Location</h3>
+  <p>{{ accommodation.description }}</p>
+  <p>Location: {{ accommodation.location }}</p>
+
+  <!-- Facilities -->
+  <h3>Facilities</h3>
+  <ul class="list-group">
+    <li class="list-group-item" *ngIf="accommodation.facilities.wifi">Wifi Available</li>
+    <li class="list-group-item" *ngIf="accommodation.facilities.privateRoomsAvailable">Private Rooms Available</li>
+    <li class="list-group-item" *ngIf="accommodation.facilities.food">Food Services</li>
+    <li class="list-group-item" *ngIf="accommodation.facilities.lateCheckout">Late Checkout</li>
+    <li class="list-group-item" *ngIf="accommodation.facilities.twentyFourCheckIn">24/7 Check-In</li>
+  </ul>
+</div>

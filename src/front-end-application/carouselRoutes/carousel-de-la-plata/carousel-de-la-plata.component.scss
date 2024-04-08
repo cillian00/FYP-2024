@@ -1,0 +1,13 @@
+.card {
+  position: relative; /* This makes the .carousel positioning relative to the card */
+  /* Other styles */
+}
+
+.carousel {
+  position: absolute;
+  top: 20px; /* This positions the carousel 20px from the top of the card */
+  bottom: 20px; /* This positions the carousel 20px from the bottom of the card */
+  left: 0; /* This aligns the carousel to the left of the card */
+  right: 0; /* This aligns the carousel to the right of the card */
+  /* Other styles */
+}

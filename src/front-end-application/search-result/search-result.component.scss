@@ -1,0 +1,48 @@
+.card {
+  margin-bottom: 20px; /* Space between cards */
+  background-color: #fff; /* Light background for better contrast */
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1); /* Smoother shadow */
+    border-radius: 10px; /* Rounded corners */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  position: relative;
+}
+
+.search-bar-card {
+  width: 100%; /* Full width */
+  height: 150px; /* Fixed height */
+  padding: 15px; /* Inner padding */
+  box-sizing: border-box; /* Include padding in the width and height */
+  background-color: #fff; /* Background color, adjust as needed */
+  border: 1px solid #ddd; /* Border for the card */
+  box-shadow: 0 2px 4px rgba(0,0,0,.1); /* Optional: Adds shadow to the card */
+  margin-bottom: 20px; /* Space below the card */
+}
+
+.card-img {
+  border: black 2px;
+  border-color: black;
+  margin-left: 5px;
+  margin-top: 5px;
+  object-fit: cover; /* This will cover the area without distorting the aspect ratio */
+}
+
+.card-body {
+  padding: 15px; /* Padding inside the card */
+  margin-left: 5px;
+}
+
+.facilities-icons i {
+  margin-right: 10px; /* Space between icons */
+}
+
+.rating {
+  margin-top: 10px; /* Space above rating */
+}
+
+.btn-primary {
+  margin-top: 10px; /* Space above button */
+}

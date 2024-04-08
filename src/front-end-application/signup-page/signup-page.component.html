@@ -1,0 +1,23 @@
+<app-header></app-header>
+<div class="container d-flex align-items-center justify-content-center vh-100">
+  <div class="signup-container">
+    <h2 class="mb-4">Sign Up</h2>
+    <form class="signup-form" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" [(ngModel)]="user.name" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" [(ngModel)]="user.email" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" [(ngModel)]="user.password" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Sign Up</button>
+      </div>
+    </form>
+  </div>
+</div>

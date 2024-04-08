@@ -1,0 +1,212 @@
+#\#explore {
+  height: 32%;
+  background-color: rgba(50, 50, 50, 0.5); /* Light grey with semi-transparency */
+  color: #ffffff;
+  /* Add any other styling here */
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background: linear-gradient(to bottom, #2c282c, #262626); /* Adjust the gradient colors as needed */
+}
+
+.featured-sections {
+  padding-top: 2px;
+}
+.content {
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white background for content */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft box shadow for depth */
+}
+
+h1 {
+  color: #007bff; /* Highlight color for headings */
+  font-family: "Georgia";
+}
+
+p {
+  margin-bottom: 20px;
+  font-family: "Georgia";
+  letter-spacing: 0.5px;
+
+
+}
+
+.carousel {
+  position: relative;
+  top: 20px; /* This positions the carousel 20px from the top of the card */
+  bottom: 20px; /* This positions the carousel 20px from the bottom of the card */
+  left: 0; /* This aligns the carousel to the left of the card */
+  right: 0; /* This aligns the carousel to the right of the card */
+}
+
+app-carousel-french {
+
+  box-shadow: 0 0 10px rgba(0, 0, 0, 1); /* Soft box shadow for depth */
+  mso-border-shadow: yes;
+}
+
+.app-magic-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.card-container {
+  width: 99vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(to bottom, #2c282c, #262626); /* Adjust the gradient colors as needed */
+  padding-bottom: 10px; /* Adjust the bottom padding as needed */
+}
+
+.card {
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1); /* Smoother shadow */
+  border-radius: 10px; /* Rounded corners */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+  &:hover {
+    transform: translateY(-5px); /* Slight lift effect on hover */
+    box-shadow: 0 12px 20px 0 rgba(0,0,0,0.2); /* Deeper shadow on hover */
+  }
+}
+
+.card-body {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1); /* Smoother shadow */
+  font-family: "Georgia";
+  margin-top: 20px;
+  background-color: rgba(50, 50, 50, 0.745); /* Light grey with semi-transparency */
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  color: #fff; /* White text color */
+  text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.7); /* Subtle text shadow */
+  border-radius: 10px; /* Rounded corners for the card */
+  overflow: hidden; /* Ensures nothing spills out of the card */
+}
+
+
+#card1 {
+  background-image: url('../../assets/images/forrest1.jpg');
+  /* Additional background properties if needed */
+  background-size: cover;
+  background-position: center;
+  /* Add any other styling you need */
+}
+
+
+#card2 {
+  background-image: url('../../assets/images/forrest2.jpg');
+  /* Additional background properties if needed */
+  background-size: cover;
+  background-position: center;
+  /* Add any other styling you need */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+
+}
+
+
+#card3 {
+  background-image: url('../../assets/images/rainyForest.jpeg');
+  /* Additional background properties if needed */
+  background-size: cover;
+  background-position: center;
+  /* Add any other styling you need */
+}
+
+.custom-header {
+  padding-top: 50px;
+}
+
+
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: url('../../assets/images/new-hero-background_x3.jpg') no-repeat center center;
+  background-size: cover;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.hero-description {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.btn-primary {
+  background-color: #007bff; /* Vibrant button color */
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 5px; /* Rounded button edges */
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #0056b3; /* Darken color on hover */
+  }
+}
+
+
+.btn-primary:hover {
+  background-color: #004085;
+}
+
+app-footer-main {
+  position: relative;
+  z-index: 1;
+
+}
+
+#mainLogo {
+
+  padding-top: 200px;
+  mso-border-shadow: yes; /* Adds a dark shadow for light text */
+
+}
+
+h1, .hero-title {
+  font-family: "Georgia";
+  text-shadow: 1px 1px 4px #000000; /* Sharper text shadow */
+}
+
+p, .hero-description {
+  font-family: "Georgia";
+}
+#gradientCard {
+
+  background: linear-gradient(to bottom, #800080, #000000);
+
+}
+
+#carousels1, #carousels2, #carousel3 {
+
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+
+}
+
+#carousels2btn {
+  margin-right: auto;
+}
+
+

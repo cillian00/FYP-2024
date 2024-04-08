@@ -1,0 +1,34 @@
+
+
+html, body {
+  height: 45%;
+  margin: 0;
+  background: linear-gradient(to bottom, #2c282c, #262626); /* Adjust the gradient colors as needed */
+}
+
+h1 {
+  color: #007bff; /* Highlight color for headings */
+  font-family: "Georgia";
+}
+
+p {
+  margin-bottom: 20px;
+  font-family: "Georgia";
+  letter-spacing: 0.5px;
+  color: white;
+
+}
+
+h5,h1,h2,h3,h4 {
+  font-family: "Georgia";
+  color: blue;
+  text-shadow: 1px 1px 4px #000000; /* Sharper text shadow */
+
+}
+#gradientCard {
+
+  background: linear-gradient(to bottom, #800080, #000000);
+
+}
+
+

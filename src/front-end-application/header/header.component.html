@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+  <img class="ml-4 d-inline-block align-top" src="../../../assets/images/portallogo3.png" alt="Your App Logo" width="50" height="50">
+  <span class="navbar-brand mb-0 h1 ml-4">Pilgrims Portal</span> <!-- Adjust ml-4 for the desired left margin -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link btn btn-primary text-white mr-2" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link btn btn-primary text-white mr-2" routerLink="about">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link btn btn-primary text-white mr-2" routerLink="signup">Sign Up</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link btn btn-primary text-bg-dark mr-2" routerLink="createAccomadation">Contact</a>
+      </li>
+    </ul>
+    <form class="form-inline ml-auto">
+      <div class="input-group">
+        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+        <div class="input-group-append">
+          <button class="btn btn-outline-success" routerLink="searchResult" type="submit">Search</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</nav>
