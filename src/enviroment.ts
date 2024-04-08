@@ -1,0 +1,2 @@
+const SECRET_KEY: string = 'AKIA3UF3XMLO2BYOBMCA'
+const SUPER_SECRET_KEY: string ='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'

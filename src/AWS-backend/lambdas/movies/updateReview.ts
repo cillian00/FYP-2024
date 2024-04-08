@@ -1,4 +1,4 @@
-import { DynamoDBClient, UpdateItemCommand, AttributeValue } from '@aws-sdk/client-dynamodb';
+import { DynamoDBClient, UpdateItemCommand } from '@aws-sdk/client-dynamodb';
 import { APIGatewayProxyHandlerV2 } from 'aws-lambda';
 
 const ddbClient = new DynamoDBClient({ region: process.env.REGION });

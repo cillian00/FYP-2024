@@ -11,8 +11,8 @@ export class HttpService {
   private s3: S3Client;
 
   constructor(private http: HttpClient) {
-    const accessKeyId: string = "AKIA3UF3XMLO2BYOBMCA" || ''; // Provide a fallback value
-    const secretAccessKey: string = "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" || ''; // Provide a fallback value
+    const accessKeyId: string = SECRET_KEY || ''; // Provide a fallback value
+    const secretAccessKey: string = SUPER_SECRET_KEY || ''; // Provide a fallback value
 
     this.s3 = new S3Client({
       region: "eu-west-1",
