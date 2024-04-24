@@ -1,10 +1,10 @@
-import {AccomadationData, AccomadationPageData, MovieData} from "../schemas/datasets";
+import {AccomadationData, AccomadationPageData, BookingData, MovieData, UserData} from "../schemas/datasets";
 import S3 from "aws-sdk/clients/s3";
 import {S3Client, PutObjectCommand, ObjectCannedACL} from "@aws-sdk/client-s3"; // Import for AWS SDK v3
 import { Injectable } from "@angular/core";
 import { Observable, from as observableFrom } from "rxjs";
 import { HttpClient } from "@angular/common/http";
-
+import {SECRET_KEY, SUPER_SECRET_KEY} from "../../environment"
 @Injectable({providedIn: "root"})
 export class HttpService {
 
@@ -38,31 +38,15 @@ export class HttpService {
 
   private apiUrl = 'https://xz3i0ksx8j.execute-api.eu-west-1.amazonaws.com/dev/';
 
-  // uploadImageToS3(file: File): Observable<any> {
-  //   return this.http.post<File>(`https://xz3i0ksx8j.execute-api.eu-west-1.amazonaws.com/dev/upload`, file);
-  //   console.log("uploading currently")
-  //
-  // }
 
   @Injectable({
     providedIn: 'root',
   })
 
-  // uploadFileToS3(file: File): Observable<any> {
-  //   const params = {
-  //     Bucket: 'restapistack-imagesbucketf1a776cf-rf7scykpp1we',
-  //     Key: file.name, // File name you want to save as in S3
-  //     Body: file,
-  //     ContentType: file.type,
-  //     ACL: 'public-read' // Set your ACL according to your requirements
-  //   };
-  //
-  //   return observableFrom(this.s3.upload(params).promise());
-  // }
+  // Users API
 
-
-  addMovie(movieData: MovieData): Observable<any> {
-    return this.http.post<MovieData>(`${this.apiUrl}/movies`, movieData);
+  addUser(userData: UserData): Observable<any> {
+    return this.http.post<UserData>(`${this.apiUrl}/user`, userData);
   }
 
   addAccomadation(accomadationData: AccomadationData): Observable<any> {
@@ -85,6 +69,24 @@ export class HttpService {
     return this.http.get<AccomadationPageData>(`${this.apiUrl}/accomadationPage/${id}`);
   }
 
+  // Booking API
+
+  addBooking(bookingData: BookingData): Observable<any> {
+    return this.http.post<UserData>(`${this.apiUrl}/booking`, bookingData);
+  }
+
+  getBookingById(userId: string): Observable<BookingData[]> {
+    return this.http.get<BookingData[]>(`${this.apiUrl}/booking?userId=${userId}`);
+  }
 
 
+  updateUser(user: UserData): Observable<any> {
+    return this.http.put<UserData>(`${this.apiUrl}/user/${user.userId}`, user);
+
+  }
+
+  getUser(user: UserData): Observable<any> {
+    return this.http.get<UserData>(`${this.apiUrl}/user/${user.userId}`);
+
+  }
 }

@@ -1,0 +1,112 @@
+/* Global settings for the profile page */
+.profile-container {
+  display: flex;
+  flex-direction: column; /* Stack on mobile */
+  max-width: 1200px;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Soft shadow for depth */
+  border-radius: 10px; /* Rounded corners for the container */
+  overflow: hidden; /* Ensures the child elements do not break the rounded corners */
+  background: #f8f9fa; /* Light grey background */
+}
+
+/* Sidebar styling */
+.profile-sidebar {
+  width: 100%; /* Full width on mobile */
+  border-right: none; /* Remove border on mobile */
+}
+
+/* When on larger screens, adjust the sidebar layout */
+@media (min-width: 768px) {
+  .profile-container {
+    flex-direction: row; /* Side by side on larger screens */
+  }
+  .profile-sidebar {
+    width: 300px; /* Fixed width on larger screens */
+    border-right: 1px solid #ddd; /* Border to separate from the content */
+  }
+}
+
+/* User information card styling */
+.user-info {
+  text-align: center;
+  padding: 15px;
+  border-bottom: 1px solid #ddd; /* Separate sections within the sidebar */
+}
+
+.user-info .card {
+  background: #ffffff;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  transition: box-shadow 0.3s ease; /* Animated shadow on hover */
+}
+
+.user-info .card:hover {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Hover effect for the card */
+}
+
+.user-info .card-img-top {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%; /* Circular image */
+  border: 4px solid #007bff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Slight shadow around the image */
+}
+
+.user-info .card-body {
+  padding: 15px;
+}
+
+/* Navigation styling */
+.profile-navigation ul {
+  list-style: none;
+  padding-left: 0; /* Remove default padding */
+  margin-bottom: 0; /* Remove default margin */
+}
+
+.profile-navigation li {
+  padding: 10px 15px;
+}
+
+/* Navigation links */
+.profile-navigation a {
+  display: block;
+  background-color: #007bff; /* Bootstrap primary blue */
+  color: #ffffff; /* White text */
+  padding: 10px;
+  margin: 5px 0; /* Spacing between links */
+  text-decoration: none;
+  border-radius: 5px; /* Slightly rounded corners for links */
+  transition: transform 0.2s ease; /* Bouncy effect on click */
+}
+
+.profile-navigation a:active {
+  transform: scale(0.95); /* Click effect */
+}
+
+/* Responsive navigation for larger screens */
+@media (min-width: 768px) {
+  .profile-navigation ul {
+    flex-direction: row; /* Horizontal layout on larger screens */
+    justify-content: space-around; /* Evenly space the navigation items */
+  }
+  .profile-navigation li a {
+    margin: 0 10px; /* Spacing between links on larger screens */
+  }
+}
+
+/* Profile content styling */
+.profile-content {
+  flex-grow: 1; /* Take up remaining space */
+  padding: 20px;
+  background: #ffffff; /* White background for content */
+}
+
+/* Responsive behavior for the content area */
+@media (min-width: 768px) {
+  .profile-content {
+    padding: 40px; /* More padding on larger screens */
+  }
+}
+
+/* Add more responsive breakpoints and style adjustments as needed */

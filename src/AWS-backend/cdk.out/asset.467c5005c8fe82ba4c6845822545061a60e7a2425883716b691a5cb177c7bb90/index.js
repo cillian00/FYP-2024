@@ -19098,9 +19098,9 @@ var require_XMLParser = __commonJS({
         this.options = buildOptions(options);
       }
       /**
-       * Parse XML dats to JS object 
-       * @param {string|Buffer} xmlData 
-       * @param {boolean|Object} validationOption 
+       * Parse XML dats to JS object
+       * @param {string|Buffer} xmlData
+       * @param {boolean|Object} validationOption
        */
       parse(xmlData, validationOption) {
         if (typeof xmlData === "string") {
@@ -19127,8 +19127,8 @@ var require_XMLParser = __commonJS({
       }
       /**
        * Add Entity which is not by default supported by this library
-       * @param {string} key 
-       * @param {string} value 
+       * @param {string} key
+       * @param {string} value
        */
       addEntity(key, value) {
         if (value.indexOf("&") !== -1) {
@@ -28986,7 +28986,7 @@ var require_dist_cjs59 = __commonJS({
   }
 });
 
-// lambdas/addMovie.ts
+// lambdas/addBooking.ts
 var addMovie_exports = {};
 __export(addMovie_exports, {
   handler: () => handler
@@ -29056,10 +29056,10 @@ function createDDbDocClient() {
 tslib/tslib.es6.js:
   (*! *****************************************************************************
   Copyright (c) Microsoft Corporation.
-  
+
   Permission to use, copy, modify, and/or distribute this software for any
   purpose with or without fee is hereby granted.
-  
+
   THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
   REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
   AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,

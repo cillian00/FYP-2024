@@ -1,23 +1,56 @@
-<app-header></app-header>
-<div class="container d-flex align-items-center justify-content-center vh-100">
-  <div class="signup-container">
-    <h2 class="mb-4">Sign Up</h2>
-    <form class="signup-form" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" [(ngModel)]="user.name" class="form-control" required>
-      </div>
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" [(ngModel)]="user.email" class="form-control" required>
-      </div>
-      <div class="form-group">
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" [(ngModel)]="user.password" class="form-control" required>
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Sign Up</button>
-      </div>
-    </form>
-  </div>
+<app-header [username]="username"></app-header>
+<style>
+    .container-fluid {
+      position: relative;
+      min-height: 100%;
+    }
+
+    .container-fluid::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-image: url('https://restapistack-imagesbucketf1a776cf-rf7scykpp1we.s3.eu-west-1.amazonaws.com/Camino-de-la-plata/accommodationSearchResults/0a0aa78d-da8e-4fa5-8d69-c53fd0f099ec.jpeg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      opacity: 0.4; /* Adjust the opacity as needed */
+      z-index: -1; /* Ensure the overlay is behind the content */
+    }
+
+
+  </style>
+<div class="container-fluid">
+  <amplify-authenticator initialState="signUp">
+    <!-- sign-up-field override -->
+    <ng-template
+      amplifySlot="sign-up-form-fields"
+    >
+      <!-- Re-use default `Authenticator.SignUp.FormFields` -->
+      <amplify-sign-up-form-fields></amplify-sign-up-form-fields>
+
+      <amplify-checkbox
+        name="acknowledgement"
+        (change)="isUserAdmin = !isUserAdmin"
+        value="yes"
+      >
+        Are you planning on creating listings with this account?
+      </amplify-checkbox>
+    </ng-template>
+
+    <!-- signed-in content override -->
+    <ng-template
+      amplifySlot="authenticated"
+      let-user="user"
+      let-signOut="signOut"
+    >
+      <h2>Welcome, {{ user.username }}!</h2>
+      <a (click)="onAuthenticated(user.username)" class="nav-link btn btn-primary text-white mr-2" routerLink="">New Button</a>
+      <button (click)="signOut()">Sign Out</button>
+    </ng-template>
+  </amplify-authenticator>
+  <router-outlet></router-outlet>
 </div>

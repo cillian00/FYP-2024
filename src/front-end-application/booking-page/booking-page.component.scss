@@ -1,0 +1,33 @@
+/* booking.component.scss */
+img {
+  max-height: 400px; /* Adjust based on your preference */
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  object-fit: cover; /* Ensures the image covers the area well */
+  box-shadow: black;
+}
+
+.form-label {
+  font-weight: bold; /* Make labels bold */
+}
+
+.btn-primary {
+  padding: 10px 24px; /* Larger button for better interaction */
+}
+
+/* booking.component.scss */
+.card {
+  background-color: #fff; /* Ensures the card has a solid white background */
+  border-radius: 0.5rem; /* Rounded corners for the card */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  padding: 20px; /* Increases padding inside the card for more whitespace */
+  margin-bottom: 20px;
+}
+
+.card-body {
+  padding: 2rem; /* More padding inside the card body for a spacious layout */
+}
+
+.btn-primary {
+  margin-top: 1rem; /* Extra margin above the button if needed */
+}

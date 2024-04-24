@@ -1,0 +1,60 @@
+<app-header></app-header>
+<div class="profile-container">
+  <aside class="profile-sidebar">
+    <div class="user-info">
+      <div class="card">
+        <div *ngIf="!user.image; else imageBlock" class="image-upload-container">
+          <img src="https://via.placeholder.com/150" class="card-img-top rounded-circle p-3" alt="Profile Image">
+          <button class="btn btn-primary" (click)="fileInput.click()">Upload Image</button>
+          <input type="file" #fileInput style="display: none" (change)="onFileSelected($event)">
+        </div>
+        <ng-template #imageBlock>
+          <img [src]="user.image" class="card-img-top rounded-circle p-3" alt="Profile Image">
+        </ng-template>
+        <div class="card-body text-center">
+          <h5 class="card-title">{{ user.firstName }} {{ user.lastName }}</h5>
+          <p class="card-text">{{ user.email }}</p>
+          <p class="card-text">{{ user.bio }}</p>
+          <button class="btn btn-primary" (click)="toggleEdit()">Edit</button>
+
+          <div *ngIf="editMode">
+            <input type="text" [(ngModel)]="user.firstName" placeholder="First Name">
+            <input type="text" [(ngModel)]="user.lastName" placeholder="Last Name">
+            <textarea [(ngModel)]="user.bio" maxlength="100" placeholder="Enter bio here..."></textarea>
+            <p>{{ 100 - user.bio.length }} characters left</p>
+            <button class="btn btn-success" (click)="saveChanges()">Save</button>
+            <button class="btn btn-secondary" (click)="toggleEdit()">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <!-- Profile Navigation -->
+  <nav class="profile-navigation">
+    <ul>
+      <li><a (click)="toggleBookingsDropdown()">{{ bookingsDropdown ? 'Hide Bookings' : 'My Bookings' }}</a></li>
+      <li><a  (click)="togglePhotosDropdown()">{{ photosDropdown ? 'Hide Photos' : 'My Photos' }}</a></li>
+      <li><a href="#progress">Progress Map</a></li>
+      <li><a href="#settings">Settings</a></li>
+      <li><a routerLink="/signUp">Sign Out</a></li>
+    </ul>
+  </nav>
+  <div *ngIf="bookingsDropdown">
+    <div *ngFor="let booking of bookings" class="card mt-2">
+      <div class="card-body">
+        <h5 class="card-title">Booking ID: {{ booking.bookingId }}</h5>
+        <p class="card-subtitle mb-2 text-muted">Accommodation ID: {{ booking.accommodationId }}</p>
+        <div>
+          <strong>Booking Dates:</strong>
+          <div>Start Date: {{ booking.startDate | date }}</div>
+          <div>End Date: {{ booking.endDate | date }}</div>
+        </div>
+        <p><strong>Guests:</strong> {{ booking.guests }}</p>
+      </div>
+    </div>
+  </div>
+  <section class="profile-content">
+    <!-- Content goes here -->
+  </section>
+</div>
+<app-footer-main></app-footer-main>

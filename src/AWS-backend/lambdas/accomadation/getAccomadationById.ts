@@ -8,7 +8,7 @@ export const handler: APIGatewayProxyHandlerV2 = async (event, context) => {
   try {
     console.log("Event: ", event);
     const pathParams = event.pathParameters;
-    if (!pathParams || !pathParams.movieId) {
+    if (!pathParams || !pathParams.accId) {
       return {
         statusCode: 400,
         headers: {
@@ -20,12 +20,12 @@ export const handler: APIGatewayProxyHandlerV2 = async (event, context) => {
       };
     }
 
-    const movieId = parseInt(pathParams.movieId);
+    const accPageId = parseInt(pathParams.accId);
 
     const commandOutput = await ddbDocClient.send(
       new GetCommand({
         TableName: process.env.TABLE_NAME,
-        Key: { movieId: movieId },
+        Key: { accId: accPageId },
       })
     );
 
@@ -37,11 +37,11 @@ export const handler: APIGatewayProxyHandlerV2 = async (event, context) => {
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Credentials': true,
         },
-        body: JSON.stringify({ Message: "Invalid movie Id" }),
+        body: JSON.stringify({ Message: "Invalid accPageId Id" }),
       };
     }
 
-    const movieData = commandOutput.Item;
+    const accPageData = commandOutput.Item;
 
     return {
       statusCode: 200,
@@ -50,7 +50,7 @@ export const handler: APIGatewayProxyHandlerV2 = async (event, context) => {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Credentials': true,
       },
-      body: JSON.stringify(movieData),
+      body: JSON.stringify(accPageData),
     };
   } catch (error: any) {
     console.log(JSON.stringify(error));

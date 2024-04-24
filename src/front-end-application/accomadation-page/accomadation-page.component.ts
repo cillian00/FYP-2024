@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {HttpService} from "../service/http.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-accomadation-page',
@@ -32,37 +32,45 @@ export class AccomadationPageComponent{
   };
 
 
-
   accId: number = 0;
 
-  constructor(private httpService: HttpService, private route: ActivatedRoute) {}
+  constructor(private httpService: HttpService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
+
     this.route.paramMap.subscribe(params => {
       const idParam = params.get('id');
       if (idParam !== null) {
-        this.accId = +idParam; // Convert to number
+        this.accId = +idParam;
         console.log(this.accId);
-        this.httpService.getAccomadation(this.accId).subscribe({
-              next: (response) => {
-                this.accommodation = response.data; // Extract the array from the 'data' property
-              },
-              error: (error) => {
-                console.error('Error fetching accommodation data:', error);
-              },
-              complete: () => {
-                this.isLoading = false
-                console.log(this.accommodation);
-                console.log('Accommodation data fetch complete.');
-              }
-            });
-        // Now use this.accId to fetch accommodation details or for other logic
+        this.httpService.getAccomadationPage(this.accId).subscribe({
+          next: (response) => {
+
+            this.accommodation.descriptionOne = response.descriptionOne;
+            this.accommodation.descriptionTwo = response.descriptionTwo;
+            this.accommodation.Rooms = response.Rooms;
+          },
+          error: (error) => {
+            console.error('Error fetching accommodation data:', error);
+          },
+          complete: () => {
+            this.isLoading = false;
+            console.log(this.accommodation);
+            console.log('Accommodation data fetch complete.');
+          }
+        });
       } else {
-        // Handle the case where idParam is null
         console.error('Accommodation ID is not available in the route parameters');
       }
     });
   }
+
+  navigateToCreateAccomadationPage() {
+    localStorage.setItem('accId', this.accId.toString());
+    localStorage.setItem('accName', this.accommodation.title.toString());
+    this.router.navigate(['/bookingPage']);
+  }
+
 
   // ngOnInit(): void {
   //   this.httpService.getAccomadation().subscribe({

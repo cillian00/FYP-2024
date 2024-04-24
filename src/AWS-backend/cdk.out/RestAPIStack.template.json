@@ -198,683 +198,6 @@
     "aws:cdk:path": "RestAPIStack/UserPool/Resource"
    }
   },
-  "UserPoolAppClientDD0407EC": {
-   "Type": "AWS::Cognito::UserPoolClient",
-   "Properties": {
-    "AllowedOAuthFlows": [
-     "implicit",
-     "code"
-    ],
-    "AllowedOAuthFlowsUserPoolClient": true,
-    "AllowedOAuthScopes": [
-     "profile",
-     "phone",
-     "email",
-     "openid",
-     "aws.cognito.signin.user.admin"
-    ],
-    "CallbackURLs": [
-     "https://example.com"
-    ],
-    "ExplicitAuthFlows": [
-     "ALLOW_USER_PASSWORD_AUTH",
-     "ALLOW_REFRESH_TOKEN_AUTH"
-    ],
-    "SupportedIdentityProviders": [
-     "COGNITO"
-    ],
-    "UserPoolId": {
-     "Ref": "UserPool6BA7E5F2"
-    }
-   },
-   "Metadata": {
-    "aws:cdk:path": "RestAPIStack/UserPool/AppClient/Resource"
-   }
-  },
-  "AuthServiceApi6F145F59": {
-   "Type": "AWS::ApiGateway::RestApi",
-   "Properties": {
-    "Description": "Authentication Service RestApi",
-    "EndpointConfiguration": {
-     "Types": [
-      "REGIONAL"
-     ]
-    },
-    "Name": "AuthServiceApi"
-   },
-   "Metadata": {
-    "aws:cdk:path": "RestAPIStack/AuthServiceApi/AuthServiceApi/Resource"
-   }
-  },
-  "AuthServiceApiDeploymentE6C7B14B4252c2485374e2d1fcb8cfc0bdef0e83": {
-   "Type": "AWS::ApiGateway::Deployment",
-   "Properties": {
-    "Description": "Authentication Service RestApi",
-    "RestApiId": {
-     "Ref": "AuthServiceApi6F145F59"
-    }
-   },
-   "DependsOn": [
-    "AuthServiceApiauthconfirmsignupOPTIONSF4E3A721",
-    "AuthServiceApiauthconfirmsignupPOSTBF26C81A",
-    "AuthServiceApiauthconfirmsignup53051378",
-    "AuthServiceApiauthOPTIONSB7D5DB23",
-    "AuthServiceApiauth4F918273",
-    "AuthServiceApiauthsignupOPTIONSB3E2B959",
-    "AuthServiceApiauthsignupPOST07EFAAC5",
-    "AuthServiceApiauthsignup2FA1E77F",
-    "AuthServiceApiOPTIONSF87E2E8C"
-   ],
-   "Metadata": {
-    "aws:cdk:path": "RestAPIStack/AuthServiceApi/AuthServiceApi/Deployment/Resource"
-   }
-  },
-  "AuthServiceApiDeploymentStageprodEA127565": {
-   "Type": "AWS::ApiGateway::Stage",
-   "Properties": {
-    "DeploymentId": {
-     "Ref": "AuthServiceApiDeploymentE6C7B14B4252c2485374e2d1fcb8cfc0bdef0e83"
-    },
-    "RestApiId": {
-     "Ref": "AuthServiceApi6F145F59"
-    },
-    "StageName": "prod"
-   },
-   "Metadata": {
-    "aws:cdk:path": "RestAPIStack/AuthServiceApi/AuthServiceApi/DeploymentStage.prod/Resource"
-   }
-  },
-  "AuthServiceApiOPTIONSF87E2E8C": {
-   "Type": "AWS::ApiGateway::Method",
-   "Properties": {
-    "ApiKeyRequired": false,
-    "AuthorizationType": "NONE",
-    "HttpMethod": "OPTIONS",
-    "Integration": {
-     "IntegrationResponses": [
-      {
-       "ResponseParameters": {
-        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
-        "method.response.header.Access-Control-Allow-Origin": "'*'",
-        "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,PUT,POST,DELETE,PATCH,HEAD'"
-       },
-       "StatusCode": "204"
-      }
-     ],
-     "RequestTemplates": {
-      "application/json": "{ statusCode: 200 }"
-     },
-     "Type": "MOCK"
-    },
-    "MethodResponses": [
-     {
-      "ResponseParameters": {
-       "method.response.header.Access-Control-Allow-Headers": true,
-       "method.response.header.Access-Control-Allow-Origin": true,
-       "method.response.header.Access-Control-Allow-Methods": true
-      },
-      "StatusCode": "204"
-     }
-    ],
-    "ResourceId": {
-     "Fn::GetAtt": [
-      "AuthServiceApi6F145F59",
-      "RootResourceId"
-     ]
-    },
-    "RestApiId": {
-     "Ref": "AuthServiceApi6F145F59"
-    }
-   },
-   "Metadata": {
-    "aws:cdk:path": "RestAPIStack/AuthServiceApi/AuthServiceApi/Default/OPTIONS/Resource"
-   }
-  },
-  "AuthServiceApiauth4F918273": {
-   "Type": "AWS::ApiGateway::Resource",
-   "Properties": {
-    "ParentId": {
-     "Fn::GetAtt": [
-      "AuthServiceApi6F145F59",
-      "RootResourceId"
-     ]
-    },
-    "PathPart": "auth",
-    "RestApiId": {
-     "Ref": "AuthServiceApi6F145F59"
-    }
-   },
-   "Metadata": {
-    "aws:cdk:path": "RestAPIStack/AuthServiceApi/AuthServiceApi/Default/auth/Resource"
-   }
-  },
-  "AuthServiceApiauthOPTIONSB7D5DB23": {
-   "Type": "AWS::ApiGateway::Method",
-   "Properties": {
-    "ApiKeyRequired": false,
-    "AuthorizationType": "NONE",
-    "HttpMethod": "OPTIONS",
-    "Integration": {
-     "IntegrationResponses": [
-      {
-       "ResponseParameters": {
-        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
-        "method.response.header.Access-Control-Allow-Origin": "'*'",
-        "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,PUT,POST,DELETE,PATCH,HEAD'"
-       },
-       "StatusCode": "204"
-      }
-     ],
-     "RequestTemplates": {
-      "application/json": "{ statusCode: 200 }"
-     },
-     "Type": "MOCK"
-    },
-    "MethodResponses": [
-     {
-      "ResponseParameters": {
-       "method.response.header.Access-Control-Allow-Headers": true,
-       "method.response.header.Access-Control-Allow-Origin": true,
-       "method.response.header.Access-Control-Allow-Methods": true
-      },
-      "StatusCode": "204"
-     }
-    ],
-    "ResourceId": {
-     "Ref": "AuthServiceApiauth4F918273"
-    },
-    "RestApiId": {
-     "Ref": "AuthServiceApi6F145F59"
-    }
-   },
-   "Metadata": {
-    "aws:cdk:path": "RestAPIStack/AuthServiceApi/AuthServiceApi/Default/auth/OPTIONS/Resource"
-   }
-  },
-  "AuthServiceApiauthsignup2FA1E77F": {
-   "Type": "AWS::ApiGateway::Resource",
-   "Properties": {
-    "ParentId": {
-     "Ref": "AuthServiceApiauth4F918273"
-    },
-    "PathPart": "signup",
-    "RestApiId": {
-     "Ref": "AuthServiceApi6F145F59"
-    }
-   },
-   "Metadata": {
-    "aws:cdk:path": "RestAPIStack/AuthServiceApi/AuthServiceApi/Default/auth/signup/Resource"
-   }
-  },
-  "AuthServiceApiauthsignupOPTIONSB3E2B959": {
-   "Type": "AWS::ApiGateway::Method",
-   "Properties": {
-    "ApiKeyRequired": false,
-    "AuthorizationType": "NONE",
-    "HttpMethod": "OPTIONS",
-    "Integration": {
-     "IntegrationResponses": [
-      {
-       "ResponseParameters": {
-        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
-        "method.response.header.Access-Control-Allow-Origin": "'*'",
-        "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,PUT,POST,DELETE,PATCH,HEAD'"
-       },
-       "StatusCode": "204"
-      }
-     ],
-     "RequestTemplates": {
-      "application/json": "{ statusCode: 200 }"
-     },
-     "Type": "MOCK"
-    },
-    "MethodResponses": [
-     {
-      "ResponseParameters": {
-       "method.response.header.Access-Control-Allow-Headers": true,
-       "method.response.header.Access-Control-Allow-Origin": true,
-       "method.response.header.Access-Control-Allow-Methods": true
-      },
-      "StatusCode": "204"
-     }
-    ],
-    "ResourceId": {
-     "Ref": "AuthServiceApiauthsignup2FA1E77F"
-    },
-    "RestApiId": {
-     "Ref": "AuthServiceApi6F145F59"
-    }
-   },
-   "Metadata": {
-    "aws:cdk:path": "RestAPIStack/AuthServiceApi/AuthServiceApi/Default/auth/signup/OPTIONS/Resource"
-   }
-  },
-  "AuthServiceApiauthsignupPOSTApiPermissionRestAPIStackAuthServiceApi0F27BA19POSTauthsignupBDE8AC82": {
-   "Type": "AWS::Lambda::Permission",
-   "Properties": {
-    "Action": "lambda:InvokeFunction",
-    "FunctionName": {
-     "Fn::GetAtt": [
-      "AuthServiceApiSignupFn42E54DA2",
-      "Arn"
-     ]
-    },
-    "Principal": "apigateway.amazonaws.com",
-    "SourceArn": {
-     "Fn::Join": [
-      "",
-      [
-       "arn:aws:execute-api:eu-west-1:",
-       {
-        "Ref": "AWS::AccountId"
-       },
-       ":",
-       {
-        "Ref": "AuthServiceApi6F145F59"
-       },
-       "/",
-       {
-        "Ref": "AuthServiceApiDeploymentStageprodEA127565"
-       },
-       "/POST/auth/signup"
-      ]
-     ]
-    }
-   },
-   "Metadata": {
-    "aws:cdk:path": "RestAPIStack/AuthServiceApi/AuthServiceApi/Default/auth/signup/POST/ApiPermission.RestAPIStackAuthServiceApi0F27BA19.POST..auth.signup"
-   }
-  },
-  "AuthServiceApiauthsignupPOSTApiPermissionTestRestAPIStackAuthServiceApi0F27BA19POSTauthsignup505B8A14": {
-   "Type": "AWS::Lambda::Permission",
-   "Properties": {
-    "Action": "lambda:InvokeFunction",
-    "FunctionName": {
-     "Fn::GetAtt": [
-      "AuthServiceApiSignupFn42E54DA2",
-      "Arn"
-     ]
-    },
-    "Principal": "apigateway.amazonaws.com",
-    "SourceArn": {
-     "Fn::Join": [
-      "",
-      [
-       "arn:aws:execute-api:eu-west-1:",
-       {
-        "Ref": "AWS::AccountId"
-       },
-       ":",
-       {
-        "Ref": "AuthServiceApi6F145F59"
-       },
-       "/test-invoke-stage/POST/auth/signup"
-      ]
-     ]
-    }
-   },
-   "Metadata": {
-    "aws:cdk:path": "RestAPIStack/AuthServiceApi/AuthServiceApi/Default/auth/signup/POST/ApiPermission.Test.RestAPIStackAuthServiceApi0F27BA19.POST..auth.signup"
-   }
-  },
-  "AuthServiceApiauthsignupPOST07EFAAC5": {
-   "Type": "AWS::ApiGateway::Method",
-   "Properties": {
-    "AuthorizationType": "NONE",
-    "HttpMethod": "POST",
-    "Integration": {
-     "IntegrationHttpMethod": "POST",
-     "Type": "AWS_PROXY",
-     "Uri": {
-      "Fn::Join": [
-       "",
-       [
-        "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/",
-        {
-         "Fn::GetAtt": [
-          "AuthServiceApiSignupFn42E54DA2",
-          "Arn"
-         ]
-        },
-        "/invocations"
-       ]
-      ]
-     }
-    },
-    "ResourceId": {
-     "Ref": "AuthServiceApiauthsignup2FA1E77F"
-    },
-    "RestApiId": {
-     "Ref": "AuthServiceApi6F145F59"
-    }
-   },
-   "Metadata": {
-    "aws:cdk:path": "RestAPIStack/AuthServiceApi/AuthServiceApi/Default/auth/signup/POST/Resource"
-   }
-  },
-  "AuthServiceApiauthconfirmsignup53051378": {
-   "Type": "AWS::ApiGateway::Resource",
-   "Properties": {
-    "ParentId": {
-     "Ref": "AuthServiceApiauth4F918273"
-    },
-    "PathPart": "confirm_signup",
-    "RestApiId": {
-     "Ref": "AuthServiceApi6F145F59"
-    }
-   },
-   "Metadata": {
-    "aws:cdk:path": "RestAPIStack/AuthServiceApi/AuthServiceApi/Default/auth/confirm_signup/Resource"
-   }
-  },
-  "AuthServiceApiauthconfirmsignupOPTIONSF4E3A721": {
-   "Type": "AWS::ApiGateway::Method",
-   "Properties": {
-    "ApiKeyRequired": false,
-    "AuthorizationType": "NONE",
-    "HttpMethod": "OPTIONS",
-    "Integration": {
-     "IntegrationResponses": [
-      {
-       "ResponseParameters": {
-        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
-        "method.response.header.Access-Control-Allow-Origin": "'*'",
-        "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,PUT,POST,DELETE,PATCH,HEAD'"
-       },
-       "StatusCode": "204"
-      }
-     ],
-     "RequestTemplates": {
-      "application/json": "{ statusCode: 200 }"
-     },
-     "Type": "MOCK"
-    },
-    "MethodResponses": [
-     {
-      "ResponseParameters": {
-       "method.response.header.Access-Control-Allow-Headers": true,
-       "method.response.header.Access-Control-Allow-Origin": true,
-       "method.response.header.Access-Control-Allow-Methods": true
-      },
-      "StatusCode": "204"
-     }
-    ],
-    "ResourceId": {
-     "Ref": "AuthServiceApiauthconfirmsignup53051378"
-    },
-    "RestApiId": {
-     "Ref": "AuthServiceApi6F145F59"
-    }
-   },
-   "Metadata": {
-    "aws:cdk:path": "RestAPIStack/AuthServiceApi/AuthServiceApi/Default/auth/confirm_signup/OPTIONS/Resource"
-   }
-  },
-  "AuthServiceApiauthconfirmsignupPOSTApiPermissionRestAPIStackAuthServiceApi0F27BA19POSTauthconfirmsignupE180C3DD": {
-   "Type": "AWS::Lambda::Permission",
-   "Properties": {
-    "Action": "lambda:InvokeFunction",
-    "FunctionName": {
-     "Fn::GetAtt": [
-      "AuthServiceApiConfirmFn0A585E3D",
-      "Arn"
-     ]
-    },
-    "Principal": "apigateway.amazonaws.com",
-    "SourceArn": {
-     "Fn::Join": [
-      "",
-      [
-       "arn:aws:execute-api:eu-west-1:",
-       {
-        "Ref": "AWS::AccountId"
-       },
-       ":",
-       {
-        "Ref": "AuthServiceApi6F145F59"
-       },
-       "/",
-       {
-        "Ref": "AuthServiceApiDeploymentStageprodEA127565"
-       },
-       "/POST/auth/confirm_signup"
-      ]
-     ]
-    }
-   },
-   "Metadata": {
-    "aws:cdk:path": "RestAPIStack/AuthServiceApi/AuthServiceApi/Default/auth/confirm_signup/POST/ApiPermission.RestAPIStackAuthServiceApi0F27BA19.POST..auth.confirm_signup"
-   }
-  },
-  "AuthServiceApiauthconfirmsignupPOSTApiPermissionTestRestAPIStackAuthServiceApi0F27BA19POSTauthconfirmsignup0A2B0B8D": {
-   "Type": "AWS::Lambda::Permission",
-   "Properties": {
-    "Action": "lambda:InvokeFunction",
-    "FunctionName": {
-     "Fn::GetAtt": [
-      "AuthServiceApiConfirmFn0A585E3D",
-      "Arn"
-     ]
-    },
-    "Principal": "apigateway.amazonaws.com",
-    "SourceArn": {
-     "Fn::Join": [
-      "",
-      [
-       "arn:aws:execute-api:eu-west-1:",
-       {
-        "Ref": "AWS::AccountId"
-       },
-       ":",
-       {
-        "Ref": "AuthServiceApi6F145F59"
-       },
-       "/test-invoke-stage/POST/auth/confirm_signup"
-      ]
-     ]
-    }
-   },
-   "Metadata": {
-    "aws:cdk:path": "RestAPIStack/AuthServiceApi/AuthServiceApi/Default/auth/confirm_signup/POST/ApiPermission.Test.RestAPIStackAuthServiceApi0F27BA19.POST..auth.confirm_signup"
-   }
-  },
-  "AuthServiceApiauthconfirmsignupPOSTBF26C81A": {
-   "Type": "AWS::ApiGateway::Method",
-   "Properties": {
-    "AuthorizationType": "NONE",
-    "HttpMethod": "POST",
-    "Integration": {
-     "IntegrationHttpMethod": "POST",
-     "Type": "AWS_PROXY",
-     "Uri": {
-      "Fn::Join": [
-       "",
-       [
-        "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/",
-        {
-         "Fn::GetAtt": [
-          "AuthServiceApiConfirmFn0A585E3D",
-          "Arn"
-         ]
-        },
-        "/invocations"
-       ]
-      ]
-     }
-    },
-    "ResourceId": {
-     "Ref": "AuthServiceApiauthconfirmsignup53051378"
-    },
-    "RestApiId": {
-     "Ref": "AuthServiceApi6F145F59"
-    }
-   },
-   "Metadata": {
-    "aws:cdk:path": "RestAPIStack/AuthServiceApi/AuthServiceApi/Default/auth/confirm_signup/POST/Resource"
-   }
-  },
-  "AuthServiceApiSignupFnServiceRole449F516A": {
-   "Type": "AWS::IAM::Role",
-   "Properties": {
-    "AssumeRolePolicyDocument": {
-     "Statement": [
-      {
-       "Action": "sts:AssumeRole",
-       "Effect": "Allow",
-       "Principal": {
-        "Service": "lambda.amazonaws.com"
-       }
-      }
-     ],
-     "Version": "2012-10-17"
-    },
-    "ManagedPolicyArns": [
-     {
-      "Fn::Join": [
-       "",
-       [
-        "arn:",
-        {
-         "Ref": "AWS::Partition"
-        },
-        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
-       ]
-      ]
-     }
-    ]
-   },
-   "Metadata": {
-    "aws:cdk:path": "RestAPIStack/AuthServiceApi/SignupFn/ServiceRole/Resource"
-   }
-  },
-  "AuthServiceApiSignupFn42E54DA2": {
-   "Type": "AWS::Lambda::Function",
-   "Properties": {
-    "Architectures": [
-     "arm64"
-    ],
-    "Code": {
-     "S3Bucket": {
-      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-eu-west-1"
-     },
-     "S3Key": "d7d66b7447beecf226f9e973c95b4e700e2d67f2740dce842724cb9669d3df43.zip"
-    },
-    "Environment": {
-     "Variables": {
-      "USER_POOL_ID": {
-       "Ref": "UserPool6BA7E5F2"
-      },
-      "CLIENT_ID": {
-       "Ref": "UserPoolAppClientDD0407EC"
-      },
-      "REGION": {
-       "Ref": "AWS::Region"
-      },
-      "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
-     }
-    },
-    "Handler": "index.handler",
-    "MemorySize": 128,
-    "Role": {
-     "Fn::GetAtt": [
-      "AuthServiceApiSignupFnServiceRole449F516A",
-      "Arn"
-     ]
-    },
-    "Runtime": "nodejs16.x",
-    "Timeout": 10
-   },
-   "DependsOn": [
-    "AuthServiceApiSignupFnServiceRole449F516A"
-   ],
-   "Metadata": {
-    "aws:cdk:path": "RestAPIStack/AuthServiceApi/SignupFn/Resource",
-    "aws:asset:path": "asset.d7d66b7447beecf226f9e973c95b4e700e2d67f2740dce842724cb9669d3df43",
-    "aws:asset:is-bundled": true,
-    "aws:asset:property": "Code"
-   }
-  },
-  "AuthServiceApiConfirmFnServiceRole2967189E": {
-   "Type": "AWS::IAM::Role",
-   "Properties": {
-    "AssumeRolePolicyDocument": {
-     "Statement": [
-      {
-       "Action": "sts:AssumeRole",
-       "Effect": "Allow",
-       "Principal": {
-        "Service": "lambda.amazonaws.com"
-       }
-      }
-     ],
-     "Version": "2012-10-17"
-    },
-    "ManagedPolicyArns": [
-     {
-      "Fn::Join": [
-       "",
-       [
-        "arn:",
-        {
-         "Ref": "AWS::Partition"
-        },
-        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
-       ]
-      ]
-     }
-    ]
-   },
-   "Metadata": {
-    "aws:cdk:path": "RestAPIStack/AuthServiceApi/ConfirmFn/ServiceRole/Resource"
-   }
-  },
-  "AuthServiceApiConfirmFn0A585E3D": {
-   "Type": "AWS::Lambda::Function",
-   "Properties": {
-    "Architectures": [
-     "arm64"
-    ],
-    "Code": {
-     "S3Bucket": {
-      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-eu-west-1"
-     },
-     "S3Key": "39929889c509785a923523f9cb323ce55fad53b7dc972cff1a9a0687c5b14cd0.zip"
-    },
-    "Environment": {
-     "Variables": {
-      "USER_POOL_ID": {
-       "Ref": "UserPool6BA7E5F2"
-      },
-      "CLIENT_ID": {
-       "Ref": "UserPoolAppClientDD0407EC"
-      },
-      "REGION": {
-       "Ref": "AWS::Region"
-      },
-      "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
-     }
-    },
-    "Handler": "index.handler",
-    "MemorySize": 128,
-    "Role": {
-     "Fn::GetAtt": [
-      "AuthServiceApiConfirmFnServiceRole2967189E",
-      "Arn"
-     ]
-    },
-    "Runtime": "nodejs16.x",
-    "Timeout": 10
-   },
-   "DependsOn": [
-    "AuthServiceApiConfirmFnServiceRole2967189E"
-   ],
-   "Metadata": {
-    "aws:cdk:path": "RestAPIStack/AuthServiceApi/ConfirmFn/Resource",
-    "aws:asset:path": "asset.39929889c509785a923523f9cb323ce55fad53b7dc972cff1a9a0687c5b14cd0",
-    "aws:asset:is-bundled": true,
-    "aws:asset:property": "Code"
-   }
-  },
   "MoviesTable0F76A3E4": {
    "Type": "AWS::DynamoDB::Table",
    "Properties": {
@@ -897,6 +220,30 @@
    "DeletionPolicy": "Delete",
    "Metadata": {
     "aws:cdk:path": "RestAPIStack/MoviesTable/Resource"
+   }
+  },
+  "UserTables0F40657A": {
+   "Type": "AWS::DynamoDB::Table",
+   "Properties": {
+    "AttributeDefinitions": [
+     {
+      "AttributeName": "userId",
+      "AttributeType": "S"
+     }
+    ],
+    "BillingMode": "PAY_PER_REQUEST",
+    "KeySchema": [
+     {
+      "AttributeName": "userId",
+      "KeyType": "HASH"
+     }
+    ],
+    "TableName": "Users"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/UserTables/Resource"
    }
   },
   "AccomadationTableBA1547B8": {
@@ -945,6 +292,38 @@
    "DeletionPolicy": "Delete",
    "Metadata": {
     "aws:cdk:path": "RestAPIStack/AccommodationPageTable/Resource"
+   }
+  },
+  "BookingsTableB2628485": {
+   "Type": "AWS::DynamoDB::Table",
+   "Properties": {
+    "AttributeDefinitions": [
+     {
+      "AttributeName": "userId",
+      "AttributeType": "S"
+     },
+     {
+      "AttributeName": "bookingId",
+      "AttributeType": "S"
+     }
+    ],
+    "BillingMode": "PAY_PER_REQUEST",
+    "KeySchema": [
+     {
+      "AttributeName": "userId",
+      "KeyType": "HASH"
+     },
+     {
+      "AttributeName": "bookingId",
+      "KeyType": "RANGE"
+     }
+    ],
+    "TableName": "Bookings"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/BookingsTable/Resource"
    }
   },
   "AddMovieFnServiceRoleB1F9B436": {
@@ -1315,6 +694,130 @@
    "Metadata": {
     "aws:cdk:path": "RestAPIStack/AddAccomadationPageFn/Resource",
     "aws:asset:path": "asset.6b842d08e9026ab28844e22f5f8e20c72aa1129df6e479a01cb5b846789dd436",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "NewUserFnServiceRoleE52F9884": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/NewUserFn/ServiceRole/Resource"
+   }
+  },
+  "NewUserFnServiceRoleDefaultPolicy54C357C1": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable",
+        "dynamodb:GetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:PutItem",
+        "dynamodb:Query",
+        "dynamodb:Scan",
+        "dynamodb:UpdateItem"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "UserTables0F40657A",
+          "Arn"
+         ]
+        },
+        {
+         "Ref": "AWS::NoValue"
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "NewUserFnServiceRoleDefaultPolicy54C357C1",
+    "Roles": [
+     {
+      "Ref": "NewUserFnServiceRoleE52F9884"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/NewUserFn/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "NewUserFn7F303C5C": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Architectures": [
+     "arm64"
+    ],
+    "Code": {
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-eu-west-1"
+     },
+     "S3Key": "93805500985506ded42100825bf70bb73118339a4642e59a271ccdf0b4f5b0d6.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "TABLE_NAME": {
+       "Ref": "UserTables0F40657A"
+      },
+      "REGION": "eu-west-1",
+      "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+     }
+    },
+    "Handler": "index.handler",
+    "MemorySize": 128,
+    "Role": {
+     "Fn::GetAtt": [
+      "NewUserFnServiceRoleE52F9884",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs16.x",
+    "Timeout": 10
+   },
+   "DependsOn": [
+    "NewUserFnServiceRoleDefaultPolicy54C357C1",
+    "NewUserFnServiceRoleE52F9884"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/NewUserFn/Resource",
+    "aws:asset:path": "asset.93805500985506ded42100825bf70bb73118339a4642e59a271ccdf0b4f5b0d6",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }
@@ -1814,7 +1317,7 @@
      "S3Bucket": {
       "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-eu-west-1"
      },
-     "S3Key": "c33a84a9b5aa45b3426362d013622eb2897fc67fa63ec1ffcce0235553b35d94.zip"
+     "S3Key": "0bf9df65592b13b66bbf7e8dac26b028525a2056bf8ffd3269c435ff63a5ef73.zip"
     },
     "Environment": {
      "Variables": {
@@ -1841,7 +1344,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "RestAPIStack/GetAccomadationByIdFn/Resource",
-    "aws:asset:path": "asset.c33a84a9b5aa45b3426362d013622eb2897fc67fa63ec1ffcce0235553b35d94",
+    "aws:asset:path": "asset.0bf9df65592b13b66bbf7e8dac26b028525a2056bf8ffd3269c435ff63a5ef73",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }
@@ -1880,6 +1383,53 @@
     "aws:cdk:path": "RestAPIStack/GetAccomadationPageByIdFn/ServiceRole/Resource"
    }
   },
+  "GetAccomadationPageByIdFnServiceRoleDefaultPolicy2E5B8C45": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable",
+        "dynamodb:GetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:PutItem",
+        "dynamodb:Query",
+        "dynamodb:Scan",
+        "dynamodb:UpdateItem"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "AccommodationPageTable81B77147",
+          "Arn"
+         ]
+        },
+        {
+         "Ref": "AWS::NoValue"
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "GetAccomadationPageByIdFnServiceRoleDefaultPolicy2E5B8C45",
+    "Roles": [
+     {
+      "Ref": "GetAccomadationPageByIdFnServiceRole4C0FAD56"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/GetAccomadationPageByIdFn/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
   "GetAccomadationPageByIdFn5BD8AC63": {
    "Type": "AWS::Lambda::Function",
    "Properties": {
@@ -1890,7 +1440,7 @@
      "S3Bucket": {
       "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-eu-west-1"
      },
-     "S3Key": "c33a84a9b5aa45b3426362d013622eb2897fc67fa63ec1ffcce0235553b35d94.zip"
+     "S3Key": "0bf9df65592b13b66bbf7e8dac26b028525a2056bf8ffd3269c435ff63a5ef73.zip"
     },
     "Environment": {
      "Variables": {
@@ -1913,11 +1463,497 @@
     "Timeout": 10
    },
    "DependsOn": [
+    "GetAccomadationPageByIdFnServiceRoleDefaultPolicy2E5B8C45",
     "GetAccomadationPageByIdFnServiceRole4C0FAD56"
    ],
    "Metadata": {
     "aws:cdk:path": "RestAPIStack/GetAccomadationPageByIdFn/Resource",
-    "aws:asset:path": "asset.c33a84a9b5aa45b3426362d013622eb2897fc67fa63ec1ffcce0235553b35d94",
+    "aws:asset:path": "asset.0bf9df65592b13b66bbf7e8dac26b028525a2056bf8ffd3269c435ff63a5ef73",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "newBookingFnServiceRole54AB4453": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/newBookingFn/ServiceRole/Resource"
+   }
+  },
+  "newBookingFnServiceRoleDefaultPolicy7F5BAB0F": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchWriteItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable",
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "BookingsTableB2628485",
+          "Arn"
+         ]
+        },
+        {
+         "Ref": "AWS::NoValue"
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "newBookingFnServiceRoleDefaultPolicy7F5BAB0F",
+    "Roles": [
+     {
+      "Ref": "newBookingFnServiceRole54AB4453"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/newBookingFn/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "newBookingFn3186497F": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Architectures": [
+     "arm64"
+    ],
+    "Code": {
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-eu-west-1"
+     },
+     "S3Key": "1ca5b9ca51208909b72fb504a38380a8a9a559b737f100766a2781b2abe665b4.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "TABLE_NAME": {
+       "Ref": "BookingsTableB2628485"
+      },
+      "REGION": "eu-west-1",
+      "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+     }
+    },
+    "Handler": "index.handler",
+    "MemorySize": 128,
+    "Role": {
+     "Fn::GetAtt": [
+      "newBookingFnServiceRole54AB4453",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs16.x",
+    "Timeout": 10
+   },
+   "DependsOn": [
+    "newBookingFnServiceRoleDefaultPolicy7F5BAB0F",
+    "newBookingFnServiceRole54AB4453"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/newBookingFn/Resource",
+    "aws:asset:path": "asset.1ca5b9ca51208909b72fb504a38380a8a9a559b737f100766a2781b2abe665b4",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "GetUserByIdServiceRole71A90E80": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/GetUserById/ServiceRole/Resource"
+   }
+  },
+  "GetUserByIdServiceRoleDefaultPolicyAEFA3CE1": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable",
+        "dynamodb:GetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:PutItem",
+        "dynamodb:Query",
+        "dynamodb:Scan",
+        "dynamodb:UpdateItem"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "UserTables0F40657A",
+          "Arn"
+         ]
+        },
+        {
+         "Ref": "AWS::NoValue"
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "GetUserByIdServiceRoleDefaultPolicyAEFA3CE1",
+    "Roles": [
+     {
+      "Ref": "GetUserByIdServiceRole71A90E80"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/GetUserById/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "GetUserByIdC14145AC": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Architectures": [
+     "arm64"
+    ],
+    "Code": {
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-eu-west-1"
+     },
+     "S3Key": "2b2c2b024b50a6da8d663b32beefc7d48ada688566b2d647a9d84144198d5a8d.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "TABLE_NAME": {
+       "Ref": "UserTables0F40657A"
+      },
+      "REGION": "eu-west-1",
+      "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+     }
+    },
+    "Handler": "index.handler",
+    "MemorySize": 128,
+    "Role": {
+     "Fn::GetAtt": [
+      "GetUserByIdServiceRole71A90E80",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs16.x",
+    "Timeout": 10
+   },
+   "DependsOn": [
+    "GetUserByIdServiceRoleDefaultPolicyAEFA3CE1",
+    "GetUserByIdServiceRole71A90E80"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/GetUserById/Resource",
+    "aws:asset:path": "asset.2b2c2b024b50a6da8d663b32beefc7d48ada688566b2d647a9d84144198d5a8d",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "GetBookingByIdServiceRole84D55315": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/GetBookingById/ServiceRole/Resource"
+   }
+  },
+  "GetBookingByIdServiceRoleDefaultPolicyE6917115": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:DescribeTable",
+        "dynamodb:GetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:Query",
+        "dynamodb:Scan"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "BookingsTableB2628485",
+          "Arn"
+         ]
+        },
+        {
+         "Ref": "AWS::NoValue"
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "GetBookingByIdServiceRoleDefaultPolicyE6917115",
+    "Roles": [
+     {
+      "Ref": "GetBookingByIdServiceRole84D55315"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/GetBookingById/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "GetBookingByIdEFFE0EA8": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Architectures": [
+     "arm64"
+    ],
+    "Code": {
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-eu-west-1"
+     },
+     "S3Key": "41edbc93b6edcf655f6df9b64a8156ca931f4f7025407cada12bb912d91a858f.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "TABLE_NAME": {
+       "Ref": "BookingsTableB2628485"
+      },
+      "REGION": "eu-west-1",
+      "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+     }
+    },
+    "Handler": "index.handler",
+    "MemorySize": 128,
+    "Role": {
+     "Fn::GetAtt": [
+      "GetBookingByIdServiceRole84D55315",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs16.x",
+    "Timeout": 10
+   },
+   "DependsOn": [
+    "GetBookingByIdServiceRoleDefaultPolicyE6917115",
+    "GetBookingByIdServiceRole84D55315"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/GetBookingById/Resource",
+    "aws:asset:path": "asset.41edbc93b6edcf655f6df9b64a8156ca931f4f7025407cada12bb912d91a858f",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "UpdateUserServiceRole391C6F1E": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/UpdateUser/ServiceRole/Resource"
+   }
+  },
+  "UpdateUserServiceRoleDefaultPolicyE582CE67": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable",
+        "dynamodb:GetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:PutItem",
+        "dynamodb:Query",
+        "dynamodb:Scan",
+        "dynamodb:UpdateItem"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "UserTables0F40657A",
+          "Arn"
+         ]
+        },
+        {
+         "Ref": "AWS::NoValue"
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "UpdateUserServiceRoleDefaultPolicyE582CE67",
+    "Roles": [
+     {
+      "Ref": "UpdateUserServiceRole391C6F1E"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/UpdateUser/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "UpdateUserCDA15069": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Architectures": [
+     "arm64"
+    ],
+    "Code": {
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-eu-west-1"
+     },
+     "S3Key": "4ff97f197c243095dba7061cac5071008bc487a3373bf4908a86df7cb2f2027a.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "TABLE_NAME": {
+       "Ref": "UserTables0F40657A"
+      },
+      "REGION": "eu-west-1",
+      "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+     }
+    },
+    "Handler": "index.handler",
+    "MemorySize": 128,
+    "Role": {
+     "Fn::GetAtt": [
+      "UpdateUserServiceRole391C6F1E",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs16.x",
+    "Timeout": 10
+   },
+   "DependsOn": [
+    "UpdateUserServiceRoleDefaultPolicyE582CE67",
+    "UpdateUserServiceRole391C6F1E"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/UpdateUser/Resource",
+    "aws:asset:path": "asset.4ff97f197c243095dba7061cac5071008bc487a3373bf4908a86df7cb2f2027a",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }
@@ -2825,7 +2861,7 @@
     "aws:cdk:path": "RestAPIStack/RestAPI/Resource"
    }
   },
-  "RestAPIDeploymentD35A538008a50462baa766851a952985f400fd2b": {
+  "RestAPIDeploymentD35A538006a4613a3f71a240c24d42d9418a9e65": {
    "Type": "AWS::ApiGateway::Deployment",
    "Properties": {
     "Description": "demo api",
@@ -2841,10 +2877,16 @@
     "RestAPIaccomadationOPTIONS469EC635",
     "RestAPIaccomadationPOST6740B514",
     "RestAPIaccomadation883506D6",
-    "RestAPIaccomadationPageGETBBDFE858",
+    "RestAPIaccomadationPageaccIdGET98658763",
+    "RestAPIaccomadationPageaccIdOPTIONS553511B3",
+    "RestAPIaccomadationPageaccIdBBB635C4",
     "RestAPIaccomadationPageOPTIONSDC072581",
     "RestAPIaccomadationPagePOST6A989741",
     "RestAPIaccomadationPage9601CCFB",
+    "RestAPIbookingGET5528BFC5",
+    "RestAPIbookingOPTIONSCEBBACC3",
+    "RestAPIbookingPOSTB766DD01",
+    "RestAPIbooking8BCFB7E9",
     "RestAPImoviesmovieIdGET6B517F00",
     "RestAPImoviesmovieIdOPTIONSC1FB0512",
     "RestAPImoviesmovieId3DE0D522",
@@ -2865,7 +2907,14 @@
     "RestAPIOPTIONS3271A002",
     "RestAPIuploadOPTIONSD1C5CF33",
     "RestAPIuploadPOST5BC9EC48",
-    "RestAPIupload5E81004C"
+    "RestAPIupload5E81004C",
+    "RestAPIuseruserIdGETEC00492B",
+    "RestAPIuseruserIdOPTIONSA113F091",
+    "RestAPIuseruserIdPUTA31189A9",
+    "RestAPIuseruserIdD5DDBD31",
+    "RestAPIuserOPTIONS815ACCDC",
+    "RestAPIuserPOSTBBBAD933",
+    "RestAPIuser4A4FFDF6"
    ],
    "Metadata": {
     "aws:cdk:path": "RestAPIStack/RestAPI/Deployment/Resource"
@@ -2875,7 +2924,7 @@
    "Type": "AWS::ApiGateway::Stage",
    "Properties": {
     "DeploymentId": {
-     "Ref": "RestAPIDeploymentD35A538008a50462baa766851a952985f400fd2b"
+     "Ref": "RestAPIDeploymentD35A538006a4613a3f71a240c24d42d9418a9e65"
     },
     "RestApiId": {
      "Ref": "RestAPI1CC12F26"
@@ -3698,7 +3747,67 @@
     "aws:cdk:path": "RestAPIStack/RestAPI/Default/accomadationPage/POST/Resource"
    }
   },
-  "RestAPIaccomadationPageGETApiPermissionRestAPIStackRestAPIBD91D303GETaccomadationPage61218D7C": {
+  "RestAPIaccomadationPageaccIdBBB635C4": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "RestAPIaccomadationPage9601CCFB"
+    },
+    "PathPart": "{accId}",
+    "RestApiId": {
+     "Ref": "RestAPI1CC12F26"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/RestAPI/Default/accomadationPage/{accId}/Resource"
+   }
+  },
+  "RestAPIaccomadationPageaccIdOPTIONS553511B3": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "ApiKeyRequired": false,
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,POST,PUT,PATCH,DELETE'",
+        "method.response.header.Access-Control-Allow-Credentials": "'true'"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Allow-Credentials": true
+      },
+      "StatusCode": "204"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "RestAPIaccomadationPageaccIdBBB635C4"
+    },
+    "RestApiId": {
+     "Ref": "RestAPI1CC12F26"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/RestAPI/Default/accomadationPage/{accId}/OPTIONS/Resource"
+   }
+  },
+  "RestAPIaccomadationPageaccIdGETApiPermissionRestAPIStackRestAPIBD91D303GETaccomadationPageaccId1A034323": {
    "Type": "AWS::Lambda::Permission",
    "Properties": {
     "Action": "lambda:InvokeFunction",
@@ -3725,16 +3834,16 @@
        {
         "Ref": "RestAPIDeploymentStagedev1DE74094"
        },
-       "/GET/accomadationPage"
+       "/GET/accomadationPage/*"
       ]
      ]
     }
    },
    "Metadata": {
-    "aws:cdk:path": "RestAPIStack/RestAPI/Default/accomadationPage/GET/ApiPermission.RestAPIStackRestAPIBD91D303.GET..accomadationPage"
+    "aws:cdk:path": "RestAPIStack/RestAPI/Default/accomadationPage/{accId}/GET/ApiPermission.RestAPIStackRestAPIBD91D303.GET..accomadationPage.{accId}"
    }
   },
-  "RestAPIaccomadationPageGETApiPermissionTestRestAPIStackRestAPIBD91D303GETaccomadationPage60ED8076": {
+  "RestAPIaccomadationPageaccIdGETApiPermissionTestRestAPIStackRestAPIBD91D303GETaccomadationPageaccIdAB3995A9": {
    "Type": "AWS::Lambda::Permission",
    "Properties": {
     "Action": "lambda:InvokeFunction",
@@ -3757,16 +3866,16 @@
        {
         "Ref": "RestAPI1CC12F26"
        },
-       "/test-invoke-stage/GET/accomadationPage"
+       "/test-invoke-stage/GET/accomadationPage/*"
       ]
      ]
     }
    },
    "Metadata": {
-    "aws:cdk:path": "RestAPIStack/RestAPI/Default/accomadationPage/GET/ApiPermission.Test.RestAPIStackRestAPIBD91D303.GET..accomadationPage"
+    "aws:cdk:path": "RestAPIStack/RestAPI/Default/accomadationPage/{accId}/GET/ApiPermission.Test.RestAPIStackRestAPIBD91D303.GET..accomadationPage.{accId}"
    }
   },
-  "RestAPIaccomadationPageGETBBDFE858": {
+  "RestAPIaccomadationPageaccIdGET98658763": {
    "Type": "AWS::ApiGateway::Method",
    "Properties": {
     "AuthorizationType": "NONE",
@@ -3791,14 +3900,14 @@
      }
     },
     "ResourceId": {
-     "Ref": "RestAPIaccomadationPage9601CCFB"
+     "Ref": "RestAPIaccomadationPageaccIdBBB635C4"
     },
     "RestApiId": {
      "Ref": "RestAPI1CC12F26"
     }
    },
    "Metadata": {
-    "aws:cdk:path": "RestAPIStack/RestAPI/Default/accomadationPage/GET/Resource"
+    "aws:cdk:path": "RestAPIStack/RestAPI/Default/accomadationPage/{accId}/GET/Resource"
    }
   },
   "RestAPImoviesA51CB040": {
@@ -4825,10 +4934,711 @@
     "aws:cdk:path": "RestAPIStack/RestAPI/Default/movies/{movieId}/reviews/GET/Resource"
    }
   },
+  "RestAPIuser4A4FFDF6": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Fn::GetAtt": [
+      "RestAPI1CC12F26",
+      "RootResourceId"
+     ]
+    },
+    "PathPart": "user",
+    "RestApiId": {
+     "Ref": "RestAPI1CC12F26"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/RestAPI/Default/user/Resource"
+   }
+  },
+  "RestAPIuserOPTIONS815ACCDC": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "ApiKeyRequired": false,
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,POST,PUT,PATCH,DELETE'",
+        "method.response.header.Access-Control-Allow-Credentials": "'true'"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Allow-Credentials": true
+      },
+      "StatusCode": "204"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "RestAPIuser4A4FFDF6"
+    },
+    "RestApiId": {
+     "Ref": "RestAPI1CC12F26"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/RestAPI/Default/user/OPTIONS/Resource"
+   }
+  },
+  "RestAPIuserPOSTApiPermissionRestAPIStackRestAPIBD91D303POSTuser2DC60BDC": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "NewUserFn7F303C5C",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:aws:execute-api:eu-west-1:",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "RestAPI1CC12F26"
+       },
+       "/",
+       {
+        "Ref": "RestAPIDeploymentStagedev1DE74094"
+       },
+       "/POST/user"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/RestAPI/Default/user/POST/ApiPermission.RestAPIStackRestAPIBD91D303.POST..user"
+   }
+  },
+  "RestAPIuserPOSTApiPermissionTestRestAPIStackRestAPIBD91D303POSTuser7624BBBE": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "NewUserFn7F303C5C",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:aws:execute-api:eu-west-1:",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "RestAPI1CC12F26"
+       },
+       "/test-invoke-stage/POST/user"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/RestAPI/Default/user/POST/ApiPermission.Test.RestAPIStackRestAPIBD91D303.POST..user"
+   }
+  },
+  "RestAPIuserPOSTBBBAD933": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "POST",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "NewUserFn7F303C5C",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "RestAPIuser4A4FFDF6"
+    },
+    "RestApiId": {
+     "Ref": "RestAPI1CC12F26"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/RestAPI/Default/user/POST/Resource"
+   }
+  },
+  "RestAPIuseruserIdD5DDBD31": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "RestAPIuser4A4FFDF6"
+    },
+    "PathPart": "{userId}",
+    "RestApiId": {
+     "Ref": "RestAPI1CC12F26"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/RestAPI/Default/user/{userId}/Resource"
+   }
+  },
+  "RestAPIuseruserIdOPTIONSA113F091": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "ApiKeyRequired": false,
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,POST,PUT,PATCH,DELETE'",
+        "method.response.header.Access-Control-Allow-Credentials": "'true'"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Allow-Credentials": true
+      },
+      "StatusCode": "204"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "RestAPIuseruserIdD5DDBD31"
+    },
+    "RestApiId": {
+     "Ref": "RestAPI1CC12F26"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/RestAPI/Default/user/{userId}/OPTIONS/Resource"
+   }
+  },
+  "RestAPIuseruserIdGETApiPermissionRestAPIStackRestAPIBD91D303GETuseruserIdC4C003CE": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "GetUserByIdC14145AC",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:aws:execute-api:eu-west-1:",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "RestAPI1CC12F26"
+       },
+       "/",
+       {
+        "Ref": "RestAPIDeploymentStagedev1DE74094"
+       },
+       "/GET/user/*"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/RestAPI/Default/user/{userId}/GET/ApiPermission.RestAPIStackRestAPIBD91D303.GET..user.{userId}"
+   }
+  },
+  "RestAPIuseruserIdGETApiPermissionTestRestAPIStackRestAPIBD91D303GETuseruserId09DA62A2": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "GetUserByIdC14145AC",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:aws:execute-api:eu-west-1:",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "RestAPI1CC12F26"
+       },
+       "/test-invoke-stage/GET/user/*"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/RestAPI/Default/user/{userId}/GET/ApiPermission.Test.RestAPIStackRestAPIBD91D303.GET..user.{userId}"
+   }
+  },
+  "RestAPIuseruserIdGETEC00492B": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "GET",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "GetUserByIdC14145AC",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "RestAPIuseruserIdD5DDBD31"
+    },
+    "RestApiId": {
+     "Ref": "RestAPI1CC12F26"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/RestAPI/Default/user/{userId}/GET/Resource"
+   }
+  },
+  "RestAPIuseruserIdPUTApiPermissionRestAPIStackRestAPIBD91D303PUTuseruserId90089AE8": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "UpdateUserCDA15069",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:aws:execute-api:eu-west-1:",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "RestAPI1CC12F26"
+       },
+       "/",
+       {
+        "Ref": "RestAPIDeploymentStagedev1DE74094"
+       },
+       "/PUT/user/*"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/RestAPI/Default/user/{userId}/PUT/ApiPermission.RestAPIStackRestAPIBD91D303.PUT..user.{userId}"
+   }
+  },
+  "RestAPIuseruserIdPUTApiPermissionTestRestAPIStackRestAPIBD91D303PUTuseruserIdF4BA4DEB": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "UpdateUserCDA15069",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:aws:execute-api:eu-west-1:",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "RestAPI1CC12F26"
+       },
+       "/test-invoke-stage/PUT/user/*"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/RestAPI/Default/user/{userId}/PUT/ApiPermission.Test.RestAPIStackRestAPIBD91D303.PUT..user.{userId}"
+   }
+  },
+  "RestAPIuseruserIdPUTA31189A9": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "PUT",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "UpdateUserCDA15069",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "RestAPIuseruserIdD5DDBD31"
+    },
+    "RestApiId": {
+     "Ref": "RestAPI1CC12F26"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/RestAPI/Default/user/{userId}/PUT/Resource"
+   }
+  },
+  "RestAPIbooking8BCFB7E9": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Fn::GetAtt": [
+      "RestAPI1CC12F26",
+      "RootResourceId"
+     ]
+    },
+    "PathPart": "booking",
+    "RestApiId": {
+     "Ref": "RestAPI1CC12F26"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/RestAPI/Default/booking/Resource"
+   }
+  },
+  "RestAPIbookingOPTIONSCEBBACC3": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "ApiKeyRequired": false,
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,POST,PUT,PATCH,DELETE'",
+        "method.response.header.Access-Control-Allow-Credentials": "'true'"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Allow-Credentials": true
+      },
+      "StatusCode": "204"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "RestAPIbooking8BCFB7E9"
+    },
+    "RestApiId": {
+     "Ref": "RestAPI1CC12F26"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/RestAPI/Default/booking/OPTIONS/Resource"
+   }
+  },
+  "RestAPIbookingPOSTApiPermissionRestAPIStackRestAPIBD91D303POSTbooking9AFEA1B1": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "newBookingFn3186497F",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:aws:execute-api:eu-west-1:",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "RestAPI1CC12F26"
+       },
+       "/",
+       {
+        "Ref": "RestAPIDeploymentStagedev1DE74094"
+       },
+       "/POST/booking"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/RestAPI/Default/booking/POST/ApiPermission.RestAPIStackRestAPIBD91D303.POST..booking"
+   }
+  },
+  "RestAPIbookingPOSTApiPermissionTestRestAPIStackRestAPIBD91D303POSTbooking53B96980": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "newBookingFn3186497F",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:aws:execute-api:eu-west-1:",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "RestAPI1CC12F26"
+       },
+       "/test-invoke-stage/POST/booking"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/RestAPI/Default/booking/POST/ApiPermission.Test.RestAPIStackRestAPIBD91D303.POST..booking"
+   }
+  },
+  "RestAPIbookingPOSTB766DD01": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "POST",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "newBookingFn3186497F",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "RestAPIbooking8BCFB7E9"
+    },
+    "RestApiId": {
+     "Ref": "RestAPI1CC12F26"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/RestAPI/Default/booking/POST/Resource"
+   }
+  },
+  "RestAPIbookingGETApiPermissionRestAPIStackRestAPIBD91D303GETbookingB97117C2": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "GetBookingByIdEFFE0EA8",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:aws:execute-api:eu-west-1:",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "RestAPI1CC12F26"
+       },
+       "/",
+       {
+        "Ref": "RestAPIDeploymentStagedev1DE74094"
+       },
+       "/GET/booking"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/RestAPI/Default/booking/GET/ApiPermission.RestAPIStackRestAPIBD91D303.GET..booking"
+   }
+  },
+  "RestAPIbookingGETApiPermissionTestRestAPIStackRestAPIBD91D303GETbooking3FE89371": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "GetBookingByIdEFFE0EA8",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:aws:execute-api:eu-west-1:",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "RestAPI1CC12F26"
+       },
+       "/test-invoke-stage/GET/booking"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/RestAPI/Default/booking/GET/ApiPermission.Test.RestAPIStackRestAPIBD91D303.GET..booking"
+   }
+  },
+  "RestAPIbookingGET5528BFC5": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "GET",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "GetBookingByIdEFFE0EA8",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "RestAPIbooking8BCFB7E9"
+    },
+    "RestApiId": {
+     "Ref": "RestAPI1CC12F26"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "RestAPIStack/RestAPI/Default/booking/GET/Resource"
+   }
+  },
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/22STW/DIAyGf8vulH300mvbabdtUbudIwpeRktwhEmrKOK/D0LSdNNOfvz6tcEkT3y14g934kILqU4Low+833shTyxKZU9L3m9aeQLPtl92pBwKNFp2szzmOdkIgsAkVlZ75P0ngSsQTXJfeYKt0WD9bSkrgYlGV8LDRXS83wH5daOTbcJnaAx29dh8k8UFKkhahujH1klIl2Kv4L9RpeJIU3WcPHBgRtQHJXgfxQJcrYk02mR5aa30iffaVgY8zsoEU3dpUcGR+NsQrjYt6rgOmnxiivNTZgqMlqUgAk98nQJTnRU1qvhxPsQhdw4QAtu25LH+b4s/pcLhWStwbBiZniZukPzvrW9aPz+EHNpKN+bxDhf6PSqwtBo/0v35ccUf0x90JK0XrrVe18B3Of4ADyYfi10CAAA="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/21SwU4DIRD9Fu8Urb302tZ4U5tWzxsK40oLzIZh22w2/LvAbrtGPb0384Y38MIjXy75w5240Eyq08zoA+/3QcgTS62qpwXv1608QWCbTzeyAbZotOym9lgPxVoQRCaxdjog7z8I/BbR5Okrj0x1TlhUaeO7OBjIYiGRGWEPSlQOFRyJvxZ4bp0MGh3TwvJ+h8OBgtNVBhYZLSpBBIH4KsNoyPs0cvPZa1cbCDh1biQ7gbeaKFWRiUbXIsBFdGkxUFg1uuwe6RM0BjsLroT0o0pB1uWWA0nz2HoJORz2AuELVRZHdlVH58JjZJuWAtr/xF/S1uNZK/CsvDhvTO+bXGUZrvxYp2Au9Nf7rQ1NGyLLyfMj3Z/nSz7PH+RIWs9864K2wHcDfgMTVspUPAIAAA=="
    },
    "Metadata": {
     "aws:cdk:path": "RestAPIStack/CDKMetadata/Default"
@@ -4836,28 +5646,6 @@
   }
  },
  "Outputs": {
-  "AuthServiceApiEndpointBBC1D636": {
-   "Value": {
-    "Fn::Join": [
-     "",
-     [
-      "https://",
-      {
-       "Ref": "AuthServiceApi6F145F59"
-      },
-      ".execute-api.eu-west-1.",
-      {
-       "Ref": "AWS::URLSuffix"
-      },
-      "/",
-      {
-       "Ref": "AuthServiceApiDeploymentStageprodEA127565"
-      },
-      "/"
-     ]
-    ]
-   }
-  },
   "RestAPIEndpointB14C3C54": {
    "Value": {
     "Fn::Join": [

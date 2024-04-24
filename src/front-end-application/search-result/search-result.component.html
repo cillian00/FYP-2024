@@ -1,22 +1,47 @@
 <!--suppress ALL -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
 <div class="spinner-border" role="status" *ngIf="isLoading">
 </div>
 
+<head>
+  <style>
+    .container-fluid {
+      position: relative;
+      min-height: 100%;
+    }
+
+    .container-fluid::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-image: url('https://restapistack-imagesbucketf1a776cf-rf7scykpp1we.s3.eu-west-1.amazonaws.com/Camino-de-la-plata/accommodationSearchResults/0a0aa78d-da8e-4fa5-8d69-c53fd0f099ec.jpeg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      opacity: 0.4; /* Adjust the opacity as needed */
+      z-index: -1; /* Ensure the overlay is behind the content */
+    }
+
+    body {
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+</head>
+
+
 <app-header></app-header>
-<div *ngIf="!isLoading" class="content-container">
+<div *ngIf="!isLoading" class="container-fluid">
   <div class="search-bar-card">
     <div class="row">
       <form class="form-inline ml-auto">
-        <div class="input-group">
-          <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-outline-success" routerLink="searchResult" type="submit">Search</button>
-          </div>
-        </div>
       </form>
     </div>
+  </div>
   <div class="row">
     <div class="col-md-3">
       <div class="side-navbar">
@@ -51,35 +76,36 @@
           <div class="col-md-6">
             <img [src]="accommodation.profilePicture" class="card-img" alt="Accommodation Image">
             <div class="card-body">
-              <h5 class="card-title">{{ accommodation.title }}</h5>
-                <div class="rating">
-                  <span style="color: gold" class="star">&#9733;</span>
-                  <span style="color: gold" class="star">&#9733;</span>
-                  <span style="color: gold" class="star">&#9733;</span>
-                  <span style="color: gold" class="star">&#9733;</span>
-                  <span class="star">&#9733;</span>
-                </div>
-              <div class="facilities-icons">
-                <i *ngIf="accommodation.facilities.food" class="fa fa-utensils" aria-hidden="true"></i>
-                <i *ngIf="accommodation.facilities.twentyFourCheckIn" class="fa fa-clock" aria-hidden="true"></i>
-                <i *ngIf="accommodation.facilities.lateCheckout" class="fa fa-door-open" aria-hidden="true"></i>
-                <i *ngIf="accommodation.facilities.privateRoomsAvailable" class="fa fa-bed" aria-hidden="true"></i>
-                <i *ngIf="accommodation.facilities.wifi" class="fa fa-wifi" aria-hidden="true"></i>
-              </div>
+              <h3 class="card-title">{{ accommodation.title }}</h3>
+              <p class="card-text"><small class="text-muted">Located At: {{ accommodation.location }}</small></p>
             </div>
           </div>
 
           <!-- Right Column: Description, Location, More Info -->
           <div class="col-md-6">
             <div class="card-body">
+              <div class="rating">
+                <span style="color: gold" class="star">&#9733;</span>
+                <span style="color: gold" class="star">&#9733;</span>
+                <span style="color: gold" class="star">&#9733;</span>
+                <span style="color: gold" class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+              </div>
+              <div class="small facilities-icons">
+                <i *ngIf="accommodation.facilities.food" class="fa fa-utensils" aria-hidden="true"></i>
+                <i *ngIf="accommodation.facilities.twentyFourCheckIn" class="fa fa-clock" aria-hidden="true"></i>
+                <i *ngIf="accommodation.facilities.lateCheckout" class="fa fa-door-open" aria-hidden="true"></i>
+                <i *ngIf="accommodation.facilities.privateRoomsAvailable" class="fa fa-bed" aria-hidden="true"></i>
+                <i *ngIf="accommodation.facilities.wifi" class="fa fa-wifi" aria-hidden="true"></i>
+              </div>
               <p class="card-text">{{ accommodation.description }}</p>
-              <p class="card-text"><small class="text-muted">Located At: {{ accommodation.location }}</small></p>
-              <button [routerLink]="['/searchResult', accommodation.accId]" type="button" class="btn btn-primary">More Info...</button>
+              <p class="card-text">Starting at: {{getLowestPrice(accommodation.accId)}}pp</p>
             </div>
           </div>
         </div>
       </div>
     </div>
+
 
     <div class="pagination-buttons">
     <button class="btn btn-dark btn-sm" (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
@@ -87,6 +113,8 @@
   </div>
 
 
+</div>
+</div>
 
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

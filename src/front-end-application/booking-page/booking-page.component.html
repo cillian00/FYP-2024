@@ -1,0 +1,48 @@
+<app-header></app-header>
+<div class="container mt-5">
+  <div class="col-12">
+    <img class="img-fluid" src="https://restapistack-imagesbucketf1a776cf-rf7scykpp1we.s3.eu-west-1.amazonaws.com/IMG_0247.JPG" alt="Accommodation View">
+  </div>
+  <div class="card mt-4">
+    <div class="card-body">
+      <!-- Form row for check-in, check-out, and guests -->
+      <div class="row justify-content-center">
+        <div class="col-md-4 mb-3">
+          <label for="checkInDate" class="form-label">Check-in Date</label>
+          <input type="date" class="form-control" id="checkInDate" [(ngModel)]="checkInDate" name="checkInDate" required>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="checkOutDate" class="form-label">Check-out Date</label>
+          <input type="date" class="form-control" id="checkOutDate" [(ngModel)]="checkOutDate" name="checkOutDate" required>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="guests" class="form-label">Guests</label>
+          <select class="form-select" id="guests" [(ngModel)]="numberOfGuests" name="guests">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Form row for room type and submit button -->
+      <div class="row justify-content-center">
+        <div class="col-md-4 mb-3">
+          <label for="roomType" class="form-label">Room Type</label>
+          <select class="form-select" id="roomType" [(ngModel)]="roomType" name="roomType">
+            <option value="Standard">Standard</option>
+            <option value="suite">Suite</option>
+            <option value="deluxe">Deluxe</option>
+          </select>
+        </div>
+        <div class="col-md-4 align-self-end">
+          <button type="submit" class="btn btn-primary w-100" (click)="createBooking()">Check Availability</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer-main></app-footer-main>
+<router-outlet></router-outlet>
+

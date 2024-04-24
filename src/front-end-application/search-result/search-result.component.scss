@@ -1,26 +1,23 @@
 .card {
   margin-bottom: 20px; /* Space between cards */
-  background-color: #fff; /* Light background for better contrast */
     margin-top: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1); /* Smoother shadow */
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.05); /* Smoother shadow */
     border-radius: 10px; /* Rounded corners */
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   position: relative;
+  background-color: rgba(226, 201, 183, 0.45 ); /* Transparent white */
+
 }
 
-.search-bar-card {
-  width: 100%; /* Full width */
-  height: 150px; /* Fixed height */
-  padding: 15px; /* Inner padding */
-  box-sizing: border-box; /* Include padding in the width and height */
-  background-color: #fff; /* Background color, adjust as needed */
-  border: 1px solid #ddd; /* Border for the card */
-  box-shadow: 0 2px 4px rgba(0,0,0,.1); /* Optional: Adds shadow to the card */
-  margin-bottom: 20px; /* Space below the card */
+.card-body{
+
+  background-color: rgba(226, 201, 183, 0.0); /* Transparent white */
+
 }
+
 
 .card-img {
   border: black 2px;
@@ -33,10 +30,22 @@
 .card-body {
   padding: 15px; /* Padding inside the card */
   margin-left: 5px;
+  display: flex; /* This will create a flex container */
+  flex-direction: column; /* Align children in a column */
+  justify-content: space-between; /* Space out t */
 }
 
-.facilities-icons i {
-  margin-right: 10px; /* Space between icons */
+.facilities-icons {
+
+  color: black;
+}
+
+.rating, .facilities-icons {
+  display: flex; /* This will make each row a flex container */
+  justify-content: flex-start; /* Align children (stars and icons) to the start */
+  align-items: center; /* Align children vertically in the center */
+  gap: 5px; /* Optional: adds space between children */
+  margin-bottom: 7px;
 }
 
 .rating {
@@ -46,3 +55,5 @@
 .btn-primary {
   margin-top: 10px; /* Space above button */
 }
+
+

@@ -1,19 +1,20 @@
 <!-- Accommodation Component Template -->
 <div class="container mt-4">
+  <app-header></app-header>
   <!-- Title -->
-  <h2>{{ accommodation.title }}</h2>
+  <h2 class="my-3 text-center">{{ accommodation.title }}</h2>
 
   <!-- Descriptions -->
   <p>{{ accommodation.descriptionOne }}</p>
   <p>{{ accommodation.descriptionTwo }}</p>
 
   <!-- Rooms Information -->
-  <div class="container mt-4">
-    <h3>Rooms</h3>
-    <div class="row">
+  <div class="mt-4">
+    <h3 class="mb-3">Rooms</h3>
+    <div class="row g-3">
       <!-- Single Room -->
-      <div class="col-md-6 col-lg-3 mb-3">
-        <div class="card">
+      <div class="col-md-6 col-lg-3">
+        <div class="card shadow-sm">
           <div class="card-body">
             <h5 class="card-title">Single Room</h5>
             <p class="card-text">Price per Room: {{ accommodation.Rooms.single.pricePerRoom | currency }}</p>
@@ -23,8 +24,8 @@
       </div>
 
       <!-- Double Room -->
-      <div class="col-md-6 col-lg-3 mb-3">
-        <div class="card">
+      <div class="col-md-6 col-lg-3">
+        <div class="card shadow-sm">
           <div class="card-body">
             <h5 class="card-title">Double Room</h5>
             <p class="card-text">Price per Room: {{ accommodation.Rooms.double.pricePerRoom | currency }}</p>
@@ -34,8 +35,8 @@
       </div>
 
       <!-- Twin Room -->
-      <div class="col-md-6 col-lg-3 mb-3">
-        <div class="card">
+      <div class="col-md-6 col-lg-3">
+        <div class="card shadow-sm">
           <div class="card-body">
             <h5 class="card-title">Twin Room</h5>
             <p class="card-text">Price per Room: {{ accommodation.Rooms.twin.pricePerRoom | currency }}</p>
@@ -45,8 +46,8 @@
       </div>
 
       <!-- Bunk Beds Room -->
-      <div class="col-md-6 col-lg-3 mb-3">
-        <div class="card">
+      <div class="col-md-6 col-lg-3">
+        <div class="card shadow-sm">
           <div class="card-body">
             <h5 class="card-title">Bunk Beds Room</h5>
             <p class="card-text">Price per Room: {{ accommodation.Rooms.bunkBeds.pricePerRoom | currency }}</p>
@@ -58,17 +59,25 @@
   </div>
 
   <!-- Additional Description and Location -->
-  <h3>Description and Location</h3>
-  <p>{{ accommodation.description }}</p>
-  <p>Location: {{ accommodation.location }}</p>
+  <div class="my-4">
+    <h3>Description and Location</h3>
+    <p>{{ accommodation.description }}</p>
+    <p>Location: {{ accommodation.location }}</p>
+  </div>
 
   <!-- Facilities -->
-  <h3>Facilities</h3>
-  <ul class="list-group">
-    <li class="list-group-item" *ngIf="accommodation.facilities.wifi">Wifi Available</li>
-    <li class="list-group-item" *ngIf="accommodation.facilities.privateRoomsAvailable">Private Rooms Available</li>
-    <li class="list-group-item" *ngIf="accommodation.facilities.food">Food Services</li>
-    <li class="list-group-item" *ngIf="accommodation.facilities.lateCheckout">Late Checkout</li>
-    <li class="list-group-item" *ngIf="accommodation.facilities.twentyFourCheckIn">24/7 Check-In</li>
-  </ul>
+  <div class="my-4">
+    <h3>Facilities</h3>
+    <ul class="list-group">
+      <li class="list-group-item" *ngIf="accommodation.facilities.wifi">Wifi Available</li>
+      <li class="list-group-item" *ngIf="accommodation.facilities.privateRoomsAvailable">Private Rooms Available</li>
+      <li class="list-group-item" *ngIf="accommodation.facilities.food">Food Services</li>
+      <li class="list-group-item" *ngIf="accommodation.facilities.lateCheckout">Late Checkout</li>
+      <li class="list-group-item" *ngIf="accommodation.facilities.twentyFourCheckIn">24/7 Check-In</li>
+    </ul>
+  </div>
+
+  <button class="btn btn-primary" (click)="navigateToCreateAccomadationPage()">Book Now!</button>
 </div>
+
+<router-outlet></router-outlet>

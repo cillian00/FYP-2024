@@ -1,0 +1,197 @@
+// Define colors and styles
+$dropdown-background-color: rgba(226, 201, 183, 0.5);
+$dropdown-border-color: #ccc;
+$dropdown-accent-color: #ffd700; // gold color for the icon background
+$dropdown-text-color: #333;
+$icon-size: 1.5em; // adjust as necessary
+
+#mainImg {
+  float: left;
+  width:  500px;
+  height: 500px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+
+img {
+  float: left;
+  width:  300px;
+  height: 280px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.card {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  background-color: rgba(226, 201, 183, 0.4); /* Transparent white */
+  justify-content: center;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1); /* Smoother shadow */
+  border-radius: 10px; /* Rounded corners */
+  border-color: grey;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+  &:hover {
+    transform: translateY(-5px); /* Slight lift effect on hover */
+    box-shadow: 0 12px 20px 0 rgba(0,0,0,0.2); /* Deeper shadow on hover */
+  }
+}
+
+.card-body {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1); /* Smoother shadow */
+  font-family: "Georgia";
+  margin-top: 20px;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  color: black; /* White text color */
+  text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.7); /* Subtle text shadow */
+  border-radius: 10px; /* Rounded corners for the card */
+  overflow: hidden; /* Ensures nothing spills out of the card */
+}
+
+p, h1 {
+  font-family: "Georgia";
+
+}
+
+.btn-theme {
+  background-color: #d2b48c; /* A warm, tan color */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-family: 'Georgia', serif;
+  font-size: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-transform: uppercase; /* Optional: for styling */
+  transition: all 0.3s ease;
+  width: 500px;
+}
+
+.btn-theme:hover {
+  background-color: #c5a26e; /* A slightly darker shade for hover state */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px); /* Raise the button slightly on hover */
+}
+
+.btn-theme:active {
+  transform: translateY(1px); /* Depress the button on click */
+}
+
+.rounded-circle {
+  width: 250px;
+  height: 250px;
+  overflow: hidden; /* Ensures no part of the image spills outside the container */
+  align-items: center; /* Vertical centering */
+  justify-content: center; /* Horizontal centering */
+  object-fit: contain;
+  border-radius: 50%; /* This will give the container a rounded shape */
+}
+.dropdown {
+  display: block;
+  margin-bottom: 1rem; // space between dropdowns
+  border: 1px solid $dropdown-border-color;
+  border-radius: 0.25rem; // slight rounding of corners
+
+  .dropdown-toggle::after {
+    content: '\25BC'; // down arrow icon
+    color: $dropdown-accent-color;
+    font-size: $icon-size;
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: $dropdown-accent-color;
+    padding: 0.25em;
+    border-radius: 50%;
+    line-height: 1; // ensures the icon is centered
+  }
+
+  // Dropdown toggle button styles
+  button.dropdown-toggle {
+    width: 100%;
+    background-color: $dropdown-background-color;
+    color: $dropdown-text-color;
+    border: none;
+    text-align: left;
+    padding: 0.75rem;
+    padding-right: 3rem; // make room for the icon
+
+    &:hover, &:focus {
+      background-color: darken($dropdown-background-color, 5%);
+      color: $dropdown-text-color;
+    }
+  }
+
+  .dropdown-menu {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    box-shadow: none;
+
+    a.dropdown-item {
+      color: $dropdown-text-color;
+      padding: 0.75rem;
+
+      &:hover, &:focus {
+        background-color: lighten($dropdown-accent-color, 40%);
+        color: $dropdown-text-color;
+      }
+    }
+  }
+}
+
+
+/* Style adjustments for the dropdown to better match the theme */
+.dropdown-toggle {
+  background-color: #f4f1ea; /* Light background */
+  color: #5a4638; /* Text color */
+  padding: 10px 15px; /* Padding for aesthetic spacing */
+  border: none; /* Removes the border */
+}
+
+.dropdown-menu {
+  border: none; /* Remove the default border */
+  box-shadow: 0px 2px 5px rgba(90, 70, 56, 0.2); /* Soft shadow for depth */
+}
+
+/* Add a custom style for the icons within the list items */
+.nav-pills .nav-link svg {
+  background-color: red;
+
+  fill: #a89f91; /* An earthy tone for the icons */
+  margin-right: 5px; /* Space between the icon and text */
+}
+
+#wrapper {
+  display: flex;
+  width: 100%;
+  background-color: rgba(226, 201, 183, 0.4) !important;
+}
+
+#sidebar-wrapper {
+  min-width: 250px;
+  max-width: 250px;
+  height: 100vh;
+  background-color: rgba(226, 201, 183, 0.4) !important; /* Transparent white */
+}
+
+.sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2em;
+}
+
+.list-group-item-action {
+  width: 100%;
+  background-color: rgba(226, 201, 183, 0.4) !important; /* Transparent white */
+}
+
+#page-content-wrapper {
+  flex: 1;
+  background-color: red;
+
+}

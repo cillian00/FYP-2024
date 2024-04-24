@@ -1,1 +1,179 @@
-<p>de-la-plata-page works!</p>
+  <!-- src/app/app.component.html -->
+  <html>
+  <head>
+    <style>
+      .container-fluid {
+        position: relative;
+        min-height: 100%;
+      }
+
+      .container-fluid::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-image: url('assets/images/pilgrimage_wallpaper.jpeg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        opacity: 0.3; /* Adjust the opacity as needed */
+        z-index: -1; /* Ensure the overlay is behind the content */
+      }
+
+      body {
+        position: relative;
+        z-index: 1;
+      }
+    </style>
+  </head>
+  <app-header class="custom-header"></app-header>
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="bg-light border-right" id="sidebar-wrapper">
+        <div class="sidebar-heading">Camino De La Plata</div>
+        <div class="list-group list-group-flush">
+          <a (click)="scrollToElement(highlightsSection)" class="list-group-item list-group-item-action bg-light" data-bs-toggle="collapse" data-bs-target="#Route" aria-expanded="false" aria-controls="RouteCollapse" onclick="scrollToElement('Route')">Route</a>
+          <a (click)="scrollToElement(highlightsSection)" class="list-group-item list-group-item-action bg-light" data-bs-toggle="collapse" data-bs-target="#Highlights" aria-expanded="false" aria-controls="HighlightsCollapse">Highlights</a>
+          <a (click)="scrollToElement(highlightsSection)" class="list-group-item list-group-item-action bg-light" data-bs-toggle="collapse" data-bs-target="#Accommodation" aria-expanded="false" aria-controls="AccommodationCollapse">Accommodation</a>
+        </div>
+      </div>
+
+      <div class="col-md-8">
+
+        <div class="row">
+          <div class="col-md-6">
+            <img id="mainImg" src="../../../assets/images/fc1.jpg" alt="Descriptive Alt Text" class="img-fluid" style="border: 1px solid #ddd; border-radius: 4px; padding: 5px;">
+          </div>
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-body">
+                <h1 class="card-title">Camino De-La-Plata (112km)</h1>
+                <p class="card-text">Walk the last 100 km of the Via de la Plata or Camino Sanabrés from Ourense to Santiago.</p>
+                <p class="card-text">The Camino de la Plata, or the Silver Route, is a historic and storied pilgrimage path that meanders through the heart of Spain. <p> Starting in Seville, this ancient Roman road traverses northward across the Iberian Peninsula, stretching over 1,000 kilometers. It's marked by diverse landscapes, from verdant valleys to arid plains, leading pilgrims through cultural treasures, medieval towns, and Roman ruins.<p>  The Camino de la Plata culminates in the sacred city of Santiago de Compostela, where the reputed tomb of Saint James the Apostle beckons travelers. Each year, it calls to those seeking spiritual growth, adventure, and the embrace of Spain's rich heritage.</p>
+              </div>
+            </div>
+          </div>
+
+
+        <div class="row">
+          <div class="container mt-3">
+            <p>
+              <a class="btn btn-theme" data-bs-toggle="collapse" href="#Route" role="button" aria-expanded="false" aria-controls="includedServices">
+                Route
+              </a>
+            </p>
+            <div class="collapse" id="Route">
+              <div class="card card-body">
+                <ul class="list-group list-group-flush">
+                  <!-- Repeat the list item for each service -->
+                  <h1>Terrain Guide</h1>
+                  <li class="list-group-item">
+                    <i class="fa fa-mountain"></i> Leaving Ourense, you'll find yourself walking up a large hill, then elevation will settle as you get to Cea
+                  </li>
+                  <li class="list-group-item">
+                    <i class="fa fa-mountain"></i> Through forrest you'll experience alot of ups and downs on your trail.
+                  </li>
+                  <li class="list-group-item">
+                    <i class="fa fa-mountain"></i> Through forrest you'll experience alot of ups and downs on your trail.
+                  </li>
+                  <li class="list-group-item">
+                    <i class="fa fa-mountain"></i> Through forrest you'll experience alot of ups and downs on your trail.
+                  </li>
+                  <li class="list-group-item">
+                    <i class="fa fa-mountain"></i> Through forrest you'll experience alot of ups and downs on your trail.
+                  </li>
+                  <li class="list-group-item">
+                    <i class="fa fa-mountain"></i> Large elevation change as you have santiago is a city on a high level of elevation.
+                  </li>
+                  <div class="container my-5">
+                    <div class="row text-center">
+                      <div class="col-lg-3 col-md-6 mb-4" *ngFor="let service of services">
+                        <div class="service-item mx-auto">
+                          <div class="service-img-container mb-3">
+                            <img src="{{ service.image }}" class="img-fluid" alt="{{ service.name }}">
+                          </div>
+                          <h4 class="service-title">{{ service.name }}</h4>
+                          <p class="service-description">{{ service.description }}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="container mt-3">
+            <p>
+              <a class="btn btn-theme" #highlightsSection data-bs-toggle="collapse" href="#Highlights" role="button" aria-expanded="false" aria-controls="includedServices">
+                Highlights
+              </a>
+            </p>
+            <div class="collapse" id="Highlights">
+              <div class="card card-body">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    <i class="fa fa-globe"></i> Beautiful Scenery
+                  </li>
+                  <li class="list-group-item">
+                    <i class="fa fa-bed"></i> Lots of available accommodation on the route.
+                  </li>
+                  <li class="list-group-item">
+                    <i class="fa fa-coffee"></i> Excellent Small cafes on the route!
+                  </li>
+                  <li class="list-group-item">
+                    <i class="fa fa-trophy"></i> Awarded Compostella upon completion
+                  </li>
+                  <div class="container my-5">
+                    <div class="row text-center">
+                      <div class="col-lg-3 col-md-6 mb-4" *ngFor="let service of highlights">
+                        <div class="service-item mx-auto">
+                          <div class="service-img-container mb-3">
+                            <img src="{{ service.image }}" class=" img-fluid service-image" alt="{{ service.name }}">
+                          </div>
+                          <h4 class="service-title">{{ service.name }}</h4>
+                          <p class="service-description">{{ service.description }}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="container mt-3">
+            <p>
+              <a class="btn btn-theme" data-bs-toggle="collapse" href="#Accommodation" role="button" aria-expanded="false" aria-controls="includedServices">
+                Accommodation
+              </a>
+            </p>
+            <div class="collapse" id="Accommodation">
+              <div class="card card-body">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    <i class="fa fa-globe"></i>See our accommodation available
+                    <button [routerLink]="['/searchResult']" type="button" class="btn btn-primary">More Info...</button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  </div>
+  <script>
+  <app-footer-main></app-footer-main>
+  <router-outlet></router-outlet>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+

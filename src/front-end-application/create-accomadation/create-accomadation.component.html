@@ -11,13 +11,11 @@
   <h2>Create a New Form of Accommodation</h2>
 
   <div class="row">
-    <!-- Column for Profile Picture -->
     <div class="col-md-4">
       <input type="file" (change)="onProfilePictureChange($event)" accept="image/*">
       <img id="imageDisplay" *ngIf="profilePicturePreviewUrl" [src]="profilePicturePreviewUrl" alt="Profile Picture Preview" class="profile-picture-preview mb-3"> <!-- Added margin bottom -->
     </div>
 
-    <!-- Column for Form Inputs -->
     <div class="col-md-8">
         <div class="form-group mb-3">
           <label for="accId" class="col-form-label">Accommodation ID:</label>

@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-signuppilgrim-dev-3de9a-authRole",
+      "UnauthRoleArn": "arn:aws:iam::799257617117:role/amplify-signuppilgrim-dev-3de9a-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::799257617117:role/amplify-signuppilgrim-dev-3de9a-authRole",
+      "Region": "eu-west-1",
+      "DeploymentBucketName": "amplify-signuppilgrim-dev-3de9a-deployment",
+      "UnauthRoleName": "amplify-signuppilgrim-dev-3de9a-unauthRole",
+      "StackName": "amplify-signuppilgrim-dev-3de9a",
+      "StackId": "arn:aws:cloudformation:eu-west-1:799257617117:stack/amplify-signuppilgrim-dev-3de9a/70939680-fc39-11ee-b5d3-0608eab9ed89",
+      "AmplifyAppId": "d2qo3tuxk4lq4s"
+    },
+    "categories": {
+      "auth": {
+        "signuppilgrimfda726a5": {}
+      }
+    }
+  }
+}
