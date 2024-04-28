@@ -1,4 +1,29 @@
 <app-header></app-header>
+<style>
+  .container-fluid {
+    position: relative;
+    min-height: 100%;
+  }
+
+  .container-fluid::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url('https://restapistack-imagesbucketf1a776cf-rf7scykpp1we.s3.eu-west-1.amazonaws.com/Camino-de-la-plata/accommodationSearchResults/0a0aa78d-da8e-4fa5-8d69-c53fd0f099ec.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    opacity: 0.4; /* Adjust the opacity as needed */
+    z-index: -1; /* Ensure the overlay is behind the content */
+  }
+
+
+</style>
+<div class="container-fluid">
 <div class="card" *ngIf="accommodationData">
   <h2>Review Accommodation Details Below:</h2>
 
@@ -102,6 +127,6 @@
     </div>
   </div>
 </div>
-
+</div>
 <router-outlet></router-outlet>
 
